@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestUrl1 {
+public class TestUrl1 extends BaseApi{
 
     @Autowired(required = false)
     private TestMapper testMapper;
