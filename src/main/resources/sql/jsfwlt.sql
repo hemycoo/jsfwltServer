@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50727
 File Encoding         : 65001
 
-Date: 2019-11-21 09:52:33
+Date: 2019-11-21 11:14:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,8 +45,10 @@ CREATE TABLE `test2` (
   `name` varchar(5) DEFAULT NULL,
   `age` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`tid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of test2
 -- ----------------------------
+INSERT INTO `test2` VALUES ('1', '1', '2');
+INSERT INTO `test2` VALUES ('2', '3', '4');
