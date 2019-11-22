@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class TestUtil {
-    public static String readJsonFile(String filePath){
+    public static String readJsonFileToString(String filePath){
         StringBuilder strb = new StringBuilder();
         try {
             FileInputStream fis = new FileInputStream(filePath);

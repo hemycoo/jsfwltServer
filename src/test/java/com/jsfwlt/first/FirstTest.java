@@ -28,7 +28,7 @@ public class FirstTest {
         System.out.println("result: \n " + result);
         //Assert.assertEquals();
 
-        JSONAssert.assertEquals(TestUtil.readJsonFile(reqJson),result,false);
+        JSONAssert.assertEquals(TestUtil.readJsonFileToString(reqJson),result,false);
     }
 
 
