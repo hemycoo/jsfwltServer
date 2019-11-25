@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jsfwlt.first.mapper.TucaoTopicMapper" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.TucaoTopic" >
+    <id column="topic_id" property="topicId" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="comment_number" property="commentNumber" jdbcType="INTEGER" />
+    <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
+    <result column="dislike_number" property="dislikeNumber" jdbcType="INTEGER" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    topic_id, title, content, comment_number, like_number, dislike_number, image_url, 
+    user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tucao_topic
+    where topic_id = #{topicId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tucao_topic
+    where topic_id = #{topicId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jsfwlt.first.po.TucaoTopic" >
+    insert into tucao_topic (topic_id, title, content, 
+      comment_number, like_number, dislike_number, 
+      image_url, user_id)
+    values (#{topicId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{commentNumber,jdbcType=INTEGER}, #{likeNumber,jdbcType=INTEGER}, #{dislikeNumber,jdbcType=INTEGER}, 
+      #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.TucaoTopic" >
+    insert into tucao_topic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="topicId != null" >
+        topic_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="commentNumber != null" >
+        comment_number,
+      </if>
+      <if test="likeNumber != null" >
+        like_number,
+      </if>
+      <if test="dislikeNumber != null" >
+        dislike_number,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="topicId != null" >
+        #{topicId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="likeNumber != null" >
+        #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeNumber != null" >
+        #{dislikeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.TucaoTopic" >
+    update tucao_topic
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        comment_number = #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="likeNumber != null" >
+        like_number = #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeNumber != null" >
+        dislike_number = #{dislikeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where topic_id = #{topicId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.TucaoTopic" >
+    update tucao_topic
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      comment_number = #{commentNumber,jdbcType=INTEGER},
+      like_number = #{likeNumber,jdbcType=INTEGER},
+      dislike_number = #{dislikeNumber,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where topic_id = #{topicId,jdbcType=VARCHAR}
+  </update>
+</mapper>
