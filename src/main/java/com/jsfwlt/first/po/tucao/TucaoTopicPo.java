@@ -1,6 +1,6 @@
-package com.jsfwlt.first.po;
+package com.jsfwlt.first.po.tucao;
 
-public class TucaoTopic {
+public class TucaoTopicPo {
     private String topicId;
 
     private String title;

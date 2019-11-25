@@ -1,6 +1,6 @@
-package com.jsfwlt.first.po;
+package com.jsfwlt.first.po.tucao;
 
-public class UserInfo {
+public class UserInfoPo {
     private String userId;
 
     private String userNickname;

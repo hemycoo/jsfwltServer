@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jsfwlt.first.mapper.TopicDetailMapper" >
-  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.TopicDetail" >
+<mapper namespace="com.jsfwlt.first.mapper.tucao.TopicDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.tucao.TopicDetailPo" >
     <id column="topic_children_id" property="topicChildrenId" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
@@ -27,7 +27,7 @@
     delete from topic_detail
     where topic_children_id = #{topicChildrenId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.jsfwlt.first.po.TopicDetail" >
+  <insert id="insert" parameterType="com.jsfwlt.first.po.tucao.TopicDetailPo" >
     insert into topic_detail (topic_children_id, content, creation_time, 
       modification_time, topic_id, comment_id, 
       user_id, user_nickname, like_number, 
@@ -37,7 +37,7 @@
       #{userId,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}, 
       #{dislikeNumber,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.TopicDetail" >
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.tucao.TopicDetailPo" >
     insert into topic_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="topicChildrenId != null" >
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.TopicDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.tucao.TopicDetailPo" >
     update topic_detail
     <set >
       <if test="content != null" >
@@ -137,7 +137,7 @@
     </set>
     where topic_children_id = #{topicChildrenId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.TopicDetail" >
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.tucao.TopicDetailPo" >
     update topic_detail
     set content = #{content,jdbcType=VARCHAR},
       creation_time = #{creationTime,jdbcType=TIMESTAMP},

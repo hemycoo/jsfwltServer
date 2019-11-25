@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jsfwlt.first.mapper.CommentMapper" >
-  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.Comment" >
+<mapper namespace="com.jsfwlt.first.mapper.tucao.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.tucao.CommentPo" >
     <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
     <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
     <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
@@ -23,7 +23,7 @@
     delete from comment
     where comment_id = #{commentId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.jsfwlt.first.po.Comment" >
+  <insert id="insert" parameterType="com.jsfwlt.first.po.tucao.CommentPo" >
     insert into comment (comment_id, comment_content, comment_time, 
       user_id, user_nickname, like_number, 
       dislike_number)
@@ -31,7 +31,7 @@
       #{userId,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}, 
       #{dislikeNumber,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.Comment" >
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.tucao.CommentPo" >
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="commentId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.Comment" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.tucao.CommentPo" >
     update comment
     <set >
       <if test="commentContent != null" >
@@ -104,7 +104,7 @@
     </set>
     where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.Comment" >
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.tucao.CommentPo" >
     update comment
     set comment_content = #{commentContent,jdbcType=VARCHAR},
       comment_time = #{commentTime,jdbcType=TIMESTAMP},

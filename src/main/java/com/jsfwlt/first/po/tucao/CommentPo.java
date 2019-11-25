@@ -1,8 +1,8 @@
-package com.jsfwlt.first.po;
+package com.jsfwlt.first.po.tucao;
 
 import java.util.Date;
 
-public class Comment {
+public class CommentPo {
     private String commentId;
 
     private String commentContent;
