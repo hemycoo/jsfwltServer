@@ -11,5 +11,4 @@ public class JsfwltApplication {
         SpringApplication.run(JsfwltApplication.class, args);
         System.out.println("start success");
     }
-
 }
