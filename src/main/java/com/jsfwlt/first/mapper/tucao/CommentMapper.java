@@ -1,7 +1,9 @@
 package com.jsfwlt.first.mapper.tucao;
 
 import com.jsfwlt.first.po.tucao.CommentPo;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface CommentMapper {
     int deleteByPrimaryKey(String commentId);
 

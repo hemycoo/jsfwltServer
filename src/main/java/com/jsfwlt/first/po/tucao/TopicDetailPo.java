@@ -1,7 +1,10 @@
 package com.jsfwlt.first.po.tucao;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.Date;
 
+@Mapper
 public class TopicDetailPo {
     private String topicChildrenId;
 

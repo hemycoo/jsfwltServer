@@ -3,17 +3,11 @@ package com.jsfwlt.first;
 import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class FirstTest {
+public class FirstTest extends BaseTest{
 
     private RestTemplate template = new RestTemplate();
 
@@ -22,7 +16,7 @@ public class FirstTest {
 
         final String reqJson ="src/test/resources/FirstTest/Test1.json";
 
-        String url = "http://localhost:8080/test";
+        String url = "http://localhost:8081/test";
 
         String result = template.getForObject(url,String.class);
         System.out.println("result: \n " + result);
