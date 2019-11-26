@@ -1,7 +1,9 @@
 package com.jsfwlt.first.mapper.tucao;
 
 import com.jsfwlt.first.po.tucao.UserInfoPo;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserInfoMapper {
     int deleteByPrimaryKey(String userId);
 
