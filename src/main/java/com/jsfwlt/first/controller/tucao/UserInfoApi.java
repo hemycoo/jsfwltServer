@@ -15,6 +15,7 @@ public class UserInfoApi extends BaseApi {
     @Autowired(required = false)
     private UserInfoMapper userInfoMapper;
 
+
     //根据用户的ID查询
     @GetMapping("/userInfo/query")
     public UserInfoPo queryUserInfo(){
