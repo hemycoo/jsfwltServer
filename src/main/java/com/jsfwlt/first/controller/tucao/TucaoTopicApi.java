@@ -1,14 +1,16 @@
 package com.jsfwlt.first.controller.tucao;
 
 import com.jsfwlt.first.controller.BaseApi;
-import com.jsfwlt.first.mapper.tucao.TopicDetailMapper;
 import com.jsfwlt.first.mapper.tucao.TucaoTopicMapper;
 import com.jsfwlt.first.po.tucao.TucaoTopicPo;
-import com.jsfwlt.first.vo.tucao.TopicDetailListVo;
 import com.jsfwlt.first.vo.tucao.TucaoTopicListVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class TucaoTopicApi extends BaseApi {
@@ -24,5 +26,13 @@ public class TucaoTopicApi extends BaseApi {
         return tucaoTopicPo;
     }
 
+    //查询吐槽信息列表
+    @GetMapping("/tucao/topic/queryAll")
+    public TucaoTopicListVo queryAllTucaoTopic(){
+        TucaoTopicListVo tucaoTopicListVo = new TucaoTopicListVo();
+        tucaoTopicListVo.setData(tucaoTopicMapper.selectAllTucaoTopic());
+        System.out.println("请求成功");
+        return tucaoTopicListVo;
+    }
 
 }

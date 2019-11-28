@@ -126,4 +126,9 @@
       user_id = #{userId,jdbcType=VARCHAR}
     where topic_id = #{topicId,jdbcType=VARCHAR}
   </update>
+  <select id="selectAllTucaoTopic" resultMap="BaseResultMap" parameterType="string">
+    select
+    <include refid="Base_Column_List" />
+    from tucao_topic
+  </select>
 </mapper>
