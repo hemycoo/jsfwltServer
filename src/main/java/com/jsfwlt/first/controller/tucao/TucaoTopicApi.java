@@ -4,8 +4,8 @@ import com.jsfwlt.first.controller.BaseApi;
 import com.jsfwlt.first.mapper.tucao.TucaoTopicMapper;
 import com.jsfwlt.first.po.tucao.TucaoTopicPo;
 import com.jsfwlt.first.vo.tucao.TucaoTopicListVo;
+import com.jsfwlt.first.vo.tucao.TucaoTopicVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,19 +20,25 @@ public class TucaoTopicApi extends BaseApi {
 
     //根据吐槽的ID查询
     @GetMapping("/tucao/topic/query")
-    public TucaoTopicPo queryTucaoTopic(){
-        TucaoTopicPo tucaoTopicPo = tucaoTopicMapper.selectByPrimaryKey("1");
+    public TucaoTopicVo queryTucaoTopic(){
+        TucaoTopicPo tucaoTopicPo = tucaoTopicMapper.selectByPrimaryKey("topicId1");
         System.out.println("query TucaoTopic success");
-        return tucaoTopicPo;
+        TucaoTopicVo tucaoTopicVo = new TucaoTopicVo();
+        tucaoTopicVo.setData(tucaoTopicPo);
+        return tucaoTopicVo;
     }
 
     //查询吐槽信息列表
     @GetMapping("/tucao/topic/queryAll")
-    public TucaoTopicListVo queryAllTucaoTopic(){
+    public TucaoTopicListVo queryAllTucaoTopic(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse){
         TucaoTopicListVo tucaoTopicListVo = new TucaoTopicListVo();
         tucaoTopicListVo.setData(tucaoTopicMapper.selectAllTucaoTopic());
         System.out.println("请求成功");
-        return tucaoTopicListVo;
+        httpServletResponse.setHeader("Access-control-Allow-Origin", httpServletRequest.getHeader("Origin"));
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers", httpServletRequest.getHeader("Access-Control-Request-Headers"));
+        httpServletResponse.setHeader("Access-Control-Allow-Credentials","true");
+        return  tucaoTopicListVo;
     }
 
 }
