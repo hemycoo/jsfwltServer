@@ -44,9 +44,9 @@ public class DataGenerateService {
         }
     }
 
+    //生成话题详情数据
     public void generateData(){
-
-        for (int i = 0; i < 9; i++) {
+        for (int i = 10; i < 50; i++) {
             TopicDetailPo tp = new TopicDetailPo();
             tp.setCommentId("cid"+ i);
             tp.setContent("content"+i);
@@ -55,7 +55,7 @@ public class DataGenerateService {
             tp.setLikeNumber(i+1);
             tp.setModificationTime(new Date());
             tp.setTopicChildrenId("chId" + i);
-            tp.setTopicId("topicId" + i);
+            tp.setTopicId("topicId");
             tp.setUserId("userId" + i);
             tp.setUserNickname("name" + i);
             topicDetailMapper.insert(tp);

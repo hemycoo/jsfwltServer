@@ -11,7 +11,8 @@ public class ServiceTest1 extends BaseTest {
 
     @Test
     public void generateDataTset(){
-        serviceTest.dataGenerate();
+        //serviceTest.dataGenerate();
+        serviceTest.generateData();
         System.out.println("test generate success");
     }
 
