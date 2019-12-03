@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static com.jsfwlt.first.utils.TimeUtils.date2String;
+
 
 @RestController
 public class TopicDetailApi extends BaseApi {
@@ -43,10 +45,5 @@ public class TopicDetailApi extends BaseApi {
         queryNum++;
         System.out.println("query success" + queryNum);
         return topicDetailListVo;
-    }
-    public String date2String(Date times) {
-        SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss");
-        String newDate = dataFormat.format(times);
-        return newDate;
     }
 }
