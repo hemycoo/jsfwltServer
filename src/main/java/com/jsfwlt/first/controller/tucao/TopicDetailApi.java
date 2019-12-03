@@ -1,6 +1,7 @@
 package com.jsfwlt.first.controller.tucao;
 
 import com.jsfwlt.first.controller.BaseApi;
+import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.tucao.TopicDetailMapper;
 import com.jsfwlt.first.po.tucao.TopicDetailPo;
 import com.jsfwlt.first.vo.tucao.TopicDetailListVo;
@@ -29,10 +30,10 @@ public class TopicDetailApi extends BaseApi {
         TopicDetailListVo topicDetailListVo = new TopicDetailListVo();
         List<TopicDetailPo> topicDetailList = topicDetailMapper.selectByTopicId(req);
         if (topicDetailList.size() == 0 || topicDetailList.isEmpty()){
-            throw new Exception("sorry query no data");
+            throw new SelfException("000","sorry, query no data");
         }
         System.out.println(date2String(topicDetailList.get(0).getCreationTime()));
-        for (TopicDetailPo list:topicDetailList){
+        for (TopicDetailPo list : topicDetailList){
             TopicDetailVo topicDetailVo = new TopicDetailVo();
             BeanUtils.copyProperties(list,topicDetailVo);
             topicDetailVo.setCreationTime(date2String( list.getCreationTime()));
