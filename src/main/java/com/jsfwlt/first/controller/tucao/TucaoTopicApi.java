@@ -7,6 +7,7 @@ import com.jsfwlt.first.vo.tucao.TucaoTopicListVo;
 import com.jsfwlt.first.vo.tucao.TucaoTopicVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -18,10 +19,12 @@ public class TucaoTopicApi extends BaseApi {
     private TucaoTopicMapper tucaoTopicMapper;
 
     //根据吐槽的ID查询
-    @GetMapping("/tucao/topic/query")
-    public TucaoTopicVo queryTucaoTopic(){
-        TucaoTopicPo tucaoTopicPo = tucaoTopicMapper.selectByPrimaryKey("topicId1");
-        System.out.println("query TucaoTopic success");
+    @GetMapping("/tucao/topic/query/{topicId}")
+    public TucaoTopicVo queryTucaoTopic(@PathVariable("topicId")String topicId)throws Exception{
+        TucaoTopicPo tucaoTopicPo = tucaoTopicMapper.selectByPrimaryKey(topicId);
+        if(tucaoTopicPo == null){
+            throw new Exception("sorry query no data");
+        }
         TucaoTopicVo tucaoTopicVo = new TucaoTopicVo();
         tucaoTopicVo.setData(tucaoTopicPo);
         return tucaoTopicVo;
