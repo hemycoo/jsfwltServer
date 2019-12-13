@@ -16,7 +16,7 @@
 
         <!-- jdbc链接信息 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.177.129:3306/jsfwlt"
+                        connectionURL="jdbc:mysql://116.196.100.50:3306/jsfwlt"
                         userId="root" password="root">
         </jdbcConnection>
 
@@ -24,32 +24,38 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
+        <!--
+            targetProject 为项目的路径
+            targetPackage 为targetProject的相对路径
+            即targetPackage="com.jsfwlt.first.po.tucao"在targetProject="src/main/java"下
+        -->
         <!-- 生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.jsfwlt.first.po"
+        <javaModelGenerator targetPackage="com.jsfwlt.first.po.tucao"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="mapper"
-                         targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="tucao"
+                         targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.jsfwlt.first.mapper"
+                             targetPackage="com.jsfwlt.first.mapper.tucao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 指定要生成的表 -->
         <!--<table tableName="test2" domainObjectName="Test2" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table tableName="user_info" domainObjectName="UserInfoPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <!--<table tableName="user_info" domainObjectName="UserInfoPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="topic_detail" domainObjectName="TopicDetailPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="tucao_topic" domainObjectName="TucaoTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="tucao_topic" domainObjectName="TucaoTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="topic_detail_comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
     </context>
 </generatorConfiguration>
