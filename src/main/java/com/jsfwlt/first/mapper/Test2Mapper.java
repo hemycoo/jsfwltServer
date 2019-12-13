@@ -1,6 +1,5 @@
 package com.jsfwlt.first.mapper;
 
-import com.jsfwlt.first.po.Test2;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
