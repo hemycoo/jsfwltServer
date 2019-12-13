@@ -1,6 +1,6 @@
 package com.jsfwlt.first.service;
 
-import com.jsfwlt.first.mapper.tucao.CommentMapper;
+import com.jsfwlt.first.mapper.tucao.CommentPoMapper;
 import com.jsfwlt.first.mapper.tucao.TopicDetailMapper;
 import com.jsfwlt.first.mapper.tucao.TucaoTopicMapper;
 import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
@@ -8,9 +8,9 @@ import com.jsfwlt.first.po.tucao.CommentPo;
 import com.jsfwlt.first.po.tucao.TopicDetailPo;
 import com.jsfwlt.first.po.tucao.TucaoTopicPo;
 import com.jsfwlt.first.po.tucao.UserInfoPo;
+import com.jsfwlt.first.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Date;
 
@@ -18,7 +18,7 @@ import java.util.Date;
 public class DataGenerateService {
 
     @Autowired(required = false)
-    private CommentMapper commentMapper;
+    private CommentPoMapper commentPoMapper;
 
     @Autowired(required = false)
     private TopicDetailMapper topicDetailMapper;
@@ -29,18 +29,18 @@ public class DataGenerateService {
     @Autowired(required = false)
     private UserInfoMapper userInfoMapper;
 
-    //生成话题详情数据
-    public void dataGenerate(){
+    //生成评论详情数据
+    public void commentGenerate(){
         for (int i = 0; i < 9; i++) {
             CommentPo cp = new CommentPo();
             cp.setCommentContent("CommentContent" + i);
-            cp.setCommentId("cid"+i);
+            cp.setCommentId(IdGenerator.idGenerate("cmid"));
             cp.setCommentTime(new Date());
             cp.setDislikeNumber(i);
             cp.setLikeNumber(i + 1);
             cp.setUserId("uId" + i);
             cp.setUserNickname("name" + i);
-            commentMapper.insert(cp);
+            commentPoMapper.insert(cp);
         }
     }
 
@@ -54,7 +54,7 @@ public class DataGenerateService {
             tp.setDislikeNumber(i);
             tp.setLikeNumber(i+1);
             tp.setModificationTime(new Date(System.currentTimeMillis()));
-            tp.setTopicChildrenId("chId" + i);
+            tp.setTopicChildrenId(IdGenerator.idGenerate("tcid"));
             tp.setTopicId("topicId");
             tp.setUserId("userId" + i);
             tp.setUserNickname("name" + i);
@@ -67,7 +67,7 @@ public class DataGenerateService {
     public void insetToTucaoTopic(){
         TucaoTopicPo tucaoTopicPo = new TucaoTopicPo();
         for(int i=0;i<15;i++){
-            tucaoTopicPo.setTopicId("topicId"+i);
+            tucaoTopicPo.setTopicId(IdGenerator.idGenerate("tpid"));
             tucaoTopicPo.setTitle("title"+i);
             tucaoTopicPo.setContent("content"+i);
             tucaoTopicPo.setCommentNumber(i);
@@ -93,4 +93,5 @@ public class DataGenerateService {
         }
         System.out.println("插入user_info表成功");
     }
+
 }
