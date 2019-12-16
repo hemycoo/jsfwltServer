@@ -1,9 +1,9 @@
-package com.jsfwlt.first.vo.tucao;
+package com.jsfwlt.first.dto.tucao;
 
 import lombok.Data;
 
 @Data
-public class TopicDetailVo {
+public class TopicDetailDto {
     private String topicChildrenId;
 
     private String content;
