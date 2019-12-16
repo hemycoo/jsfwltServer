@@ -4,15 +4,15 @@ import com.jsfwlt.first.controller.BaseApi;
 import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.tucao.TopicDetailMapper;
 import com.jsfwlt.first.po.tucao.TopicDetailPo;
+import com.jsfwlt.first.dto.tucao.CommentReplyListDto;
+import com.jsfwlt.first.service.tucao.TopicDetailService;
+import com.jsfwlt.first.vo.tucao.CommentReplyListVo;
 import com.jsfwlt.first.vo.tucao.TopicDetailListVo;
-import com.jsfwlt.first.vo.tucao.TopicDetailVo;
-import javafx.scene.input.DataFormat;
+import com.jsfwlt.first.dto.tucao.TopicDetailDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static com.jsfwlt.first.utils.TimeUtils.date2String;
@@ -23,6 +23,9 @@ public class TopicDetailApi extends BaseApi {
 
     @Autowired(required = false)
     private TopicDetailMapper topicDetailMapper;
+
+    @Autowired
+    private TopicDetailService topicDetailService;
 
     private int queryNum = 0; //测试使用
 
@@ -36,14 +39,21 @@ public class TopicDetailApi extends BaseApi {
         }
         System.out.println(date2String(topicDetailList.get(0).getCreationTime()));
         for (TopicDetailPo list : topicDetailList){
-            TopicDetailVo topicDetailVo = new TopicDetailVo();
-            BeanUtils.copyProperties(list,topicDetailVo);
-            topicDetailVo.setCreationTime(date2String( list.getCreationTime()));
-            topicDetailVo.setModificationTime(date2String(list.getModificationTime()));
-            topicDetailListVo.getTopicDetaildata().add(topicDetailVo);
+            TopicDetailDto topicDetailDto = new TopicDetailDto();
+            BeanUtils.copyProperties(list,topicDetailDto);
+            topicDetailDto.setCreationTime(date2String( list.getCreationTime()));
+            topicDetailDto.setModificationTime(date2String(list.getModificationTime()));
+            topicDetailListVo.getTopicDetaildata().add(topicDetailDto);
         }
         queryNum++;
         System.out.println("query success" + queryNum);
         return topicDetailListVo;
     }
+
+    @RequestMapping("/tucao/topic/detail/query/{topicChildrenId}")
+    public CommentReplyListVo queryCommentReply(@PathVariable String topicChildrenId){
+        CommentReplyListVo commentReplyListVo = topicDetailService.selectCommentAndReplyByTopicChildrenId(topicChildrenId);
+        return commentReplyListVo;
+    }
+
 }
