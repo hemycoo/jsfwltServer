@@ -6,12 +6,10 @@ import com.jsfwlt.first.po.tucao.UserInfoPo;
 import com.jsfwlt.first.utils.EncryptUtils;
 import com.jsfwlt.first.utils.IdGenerator;
 import com.jsfwlt.first.vo.BaseVo;
+import com.jsfwlt.first.vo.tucao.LoginVo;
 import com.jsfwlt.first.vo.tucao.RegisterVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginApi {
@@ -32,6 +30,21 @@ public class LoginApi {
         userInfoMapper.insert(userInfoPo);
         registerVo.setUserNickname(userNickname);
         return registerVo;
+    }
+
+    @RequestMapping("/login")
+    public LoginVo userLogin(@RequestParam("userNickname") String userNickname, @RequestParam("userPassword") String userPassword){
+         LoginVo loginVo = new LoginVo();
+         UserInfoPo userInfoPo = userInfoMapper.selectByUserNickname(userNickname);
+         String realPassword = userInfoPo.getUserPassword();
+         if(EncryptUtils.encryptMD5(userPassword).equals(realPassword)){
+             loginVo.setUserNickname(userNickname);
+             loginVo.setMessage("登录成功");
+             return loginVo;
+         }
+         loginVo.setStatus("201");
+        loginVo.setMessage("用户名或者密码错误");
+        return loginVo;
     }
 
 }
