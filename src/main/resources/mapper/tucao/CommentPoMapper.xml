@@ -126,4 +126,11 @@
       dislike_number = #{dislikeNumber,jdbcType=INTEGER}
     where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectCommentByTopicChildrenId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from topic_detail_comment
+    where topic_children_id = #{topicChildrenId,jdbcType=VARCHAR}
+  </select>
 </mapper>

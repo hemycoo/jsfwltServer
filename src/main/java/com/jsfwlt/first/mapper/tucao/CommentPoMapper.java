@@ -3,6 +3,8 @@ package com.jsfwlt.first.mapper.tucao;
 import com.jsfwlt.first.po.tucao.CommentPo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface CommentPoMapper {
     int deleteByPrimaryKey(String commentId);
@@ -16,4 +18,6 @@ public interface CommentPoMapper {
     int updateByPrimaryKeySelective(CommentPo record);
 
     int updateByPrimaryKey(CommentPo record);
+
+    List<CommentPo> selectCommentByTopicChildrenId(String topicChildrenId);
 }

@@ -1,5 +1,6 @@
 package com.jsfwlt.first.dto.tucao;
 
+import com.jsfwlt.first.po.tucao.ReplyPo;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -22,5 +23,5 @@ public class CommentReplyListDto {
 
     private Integer dislikeNumber;
 
-    private List<CommentReplyDto> replyVoList = new ArrayList<>();
+    private List<ReplyPo> replyVoList = new ArrayList<>();
 }

@@ -21,6 +21,10 @@
         </jdbcConnection>
 
         <javaTypeResolver>
+            <!--
+            默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+            true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+            -->
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
@@ -33,16 +37,22 @@
         <javaModelGenerator targetPackage="com.jsfwlt.first.po.tucao"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
+            <!--从数据库返回的值被清理前后的空格-->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <!-- mapper映射文件生成的位置 -->
+        <!-- mapper.xml映射文件生成的位置 -->
         <sqlMapGenerator targetPackage="tucao"
                          targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- mapper接口生成的位置 -->
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+        type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+        type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+        type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+-->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.jsfwlt.first.mapper.tucao"
                              targetProject="src/main/java">
@@ -56,6 +66,7 @@
         <table tableName="comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="tucao_topic" domainObjectName="TucaoTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 <!--        <table tableName="topic_detail_comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="comment_reply" domainObjectName="ReplyPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
     </context>
 </generatorConfiguration>
