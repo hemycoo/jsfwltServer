@@ -1,9 +1,7 @@
 package com.jsfwlt.first.controller.tucao;
 
 import com.jsfwlt.first.controller.BaseApi;
-import com.jsfwlt.first.mapper.tucao.TucaoTopicMapper;
 import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
-import com.jsfwlt.first.po.tucao.TucaoTopicPo;
 import com.jsfwlt.first.po.tucao.UserInfoPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
