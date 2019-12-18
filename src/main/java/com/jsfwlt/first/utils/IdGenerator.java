@@ -18,9 +18,10 @@ public class IdGenerator {
 //    private String topicChildrenId = "tcid";  //表topic_detail的id
 //    private String commentId = "cmid";  //表comment的id
 //    private String userId = "urid";  //表user_info的id
+//   "crid"为评论回复id
     
     public static String idGenerate(String tableInfo){
-        String[] tableArray = {"tpid", "tcid", "cmid", "urid"};
+        String[] tableArray = {"tpid", "tcid", "cmid", "urid","crid"};
         if (!Arrays.asList(tableArray).contains(tableInfo)){
             throw new SelfException("00", "请输入正确的table的代号");
         }
