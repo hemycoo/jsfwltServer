@@ -1,9 +1,6 @@
 package com.jsfwlt.first.service;
 
-import com.jsfwlt.first.mapper.tucao.CommentPoMapper;
-import com.jsfwlt.first.mapper.tucao.TopicDetailMapper;
-import com.jsfwlt.first.mapper.tucao.TucaoTopicMapper;
-import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
+import com.jsfwlt.first.mapper.tucao.*;
 import com.jsfwlt.first.po.tucao.CommentPo;
 import com.jsfwlt.first.po.tucao.TopicDetailPo;
 import com.jsfwlt.first.po.tucao.TucaoTopicPo;
@@ -24,7 +21,7 @@ public class DataGenerateService {
     private TopicDetailMapper topicDetailMapper;
 
     @Autowired(required = false)
-    private TucaoTopicMapper tucaoTopicMapper;
+    private TucaoTopicPoMapper tucaoTopicPoMapper;
 
     @Autowired(required = false)
     private UserInfoMapper userInfoMapper;
@@ -75,7 +72,7 @@ public class DataGenerateService {
             tucaoTopicPo.setDislikeNumber(i);
             tucaoTopicPo.setImageUrl("https://localhost/image"+i);
             tucaoTopicPo.setUserId("userId"+i);
-            tucaoTopicMapper.insert(tucaoTopicPo);
+            tucaoTopicPoMapper.insert(tucaoTopicPo);
         }
         System.out.println("插入tucao_topic表成功");
     }

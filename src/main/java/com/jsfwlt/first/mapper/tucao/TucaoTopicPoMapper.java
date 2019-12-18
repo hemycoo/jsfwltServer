@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface TucaoTopicMapper {
+public interface TucaoTopicPoMapper {
     int deleteByPrimaryKey(String topicId);
 
     int insert(TucaoTopicPo record);

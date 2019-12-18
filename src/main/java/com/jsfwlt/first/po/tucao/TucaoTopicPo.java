@@ -1,5 +1,7 @@
 package com.jsfwlt.first.po.tucao;
 
+import java.util.Date;
+
 public class TucaoTopicPo {
     private String topicId;
 
@@ -16,6 +18,10 @@ public class TucaoTopicPo {
     private String imageUrl;
 
     private String userId;
+
+    private Date createTime;
+
+    private Date modifyTime;
 
     public String getTopicId() {
         return topicId;
@@ -79,5 +85,21 @@ public class TucaoTopicPo {
 
     public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }
