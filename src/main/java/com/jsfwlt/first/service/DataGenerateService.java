@@ -2,6 +2,10 @@ package com.jsfwlt.first.service;
 
 import com.jsfwlt.first.mapper.tucao.*;
 import com.jsfwlt.first.po.tucao.*;
+import com.jsfwlt.first.po.tucao.CommentPo;
+import com.jsfwlt.first.po.tucao.TopicDetailPo;
+import com.jsfwlt.first.po.tucao.TucaoTopicPo;
+import com.jsfwlt.first.po.tucao.UserInfoPo;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +25,7 @@ public class DataGenerateService {
     private TopicDetailMapper topicDetailMapper;
 
     @Autowired(required = false)
-    private TucaoTopicMapper tucaoTopicMapper;
+    private TucaoTopicPoMapper tucaoTopicPoMapper;
 
     @Autowired(required = false)
     private UserInfoMapper userInfoMapper;
@@ -91,7 +95,10 @@ public class DataGenerateService {
             tucaoTopicPo.setDislikeNumber(i);
             tucaoTopicPo.setImageUrl("https://localhost/image" + i);
             tucaoTopicPo.setUserId("userId" + i);
-            tucaoTopicMapper.insert(tucaoTopicPo);
+            tucaoTopicPoMapper.insert(tucaoTopicPo);
+            tucaoTopicPo.setImageUrl("https://localhost/image"+i);
+            tucaoTopicPo.setUserId("userId"+i);
+            tucaoTopicPoMapper.insert(tucaoTopicPo);
         }
         System.out.println("插入tucao_topic表成功");
     }

@@ -23,5 +23,5 @@ public class CommentReplyListDto {
 
     private Integer dislikeNumber;
 
-    private List<ReplyPo> replyVoList = new ArrayList<>();
+    private List<ReplyPo> replyPoList = new ArrayList<>();
 }

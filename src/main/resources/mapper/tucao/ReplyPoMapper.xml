@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jsfwlt.first.mapper.tucao.ReplyPoMapper" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.tucao.ReplyPo" >
+    <id column="reply_id" property="replyId" jdbcType="VARCHAR" />
+    <result column="reply_content" property="replyContent" jdbcType="VARCHAR" />
+    <result column="reply_to_name" property="replyToName" jdbcType="VARCHAR" />
+    <result column="reply_to_id" property="replyToId" jdbcType="VARCHAR" />
+    <result column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+    <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
+    <result column="dislike_number" property="dislikeNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reply_id, reply_content, reply_to_name, reply_to_id, comment_id, reply_time, user_id, 
+    user_nickname, like_number, dislike_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment_reply
+    where reply_id = #{replyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from comment_reply
+    where reply_id = #{replyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jsfwlt.first.po.tucao.ReplyPo" >
+    insert into comment_reply (reply_id, reply_content, reply_to_name, 
+      reply_to_id, comment_id, reply_time, 
+      user_id, user_nickname, like_number, 
+      dislike_number)
+    values (#{replyId,jdbcType=VARCHAR}, #{replyContent,jdbcType=VARCHAR}, #{replyToName,jdbcType=VARCHAR}, 
+      #{replyToId,jdbcType=VARCHAR}, #{commentId,jdbcType=VARCHAR}, #{replyTime,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}, 
+      #{dislikeNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.tucao.ReplyPo" >
+    insert into comment_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        reply_id,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+      <if test="replyToName != null" >
+        reply_to_name,
+      </if>
+      <if test="replyToId != null" >
+        reply_to_id,
+      </if>
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userNickname != null" >
+        user_nickname,
+      </if>
+      <if test="likeNumber != null" >
+        like_number,
+      </if>
+      <if test="dislikeNumber != null" >
+        dislike_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        #{replyId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="replyToName != null" >
+        #{replyToName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyToId != null" >
+        #{replyToId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentId != null" >
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null" >
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNumber != null" >
+        #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeNumber != null" >
+        #{dislikeNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.tucao.ReplyPo" >
+    update comment_reply
+    <set >
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="replyToName != null" >
+        reply_to_name = #{replyToName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyToId != null" >
+        reply_to_id = #{replyToId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentId != null" >
+        comment_id = #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null" >
+        user_nickname = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNumber != null" >
+        like_number = #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeNumber != null" >
+        dislike_number = #{dislikeNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where reply_id = #{replyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.tucao.ReplyPo" >
+    update comment_reply
+    set reply_content = #{replyContent,jdbcType=VARCHAR},
+      reply_to_name = #{replyToName,jdbcType=VARCHAR},
+      reply_to_id = #{replyToId,jdbcType=VARCHAR},
+      comment_id = #{commentId,jdbcType=VARCHAR},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_nickname = #{userNickname,jdbcType=VARCHAR},
+      like_number = #{likeNumber,jdbcType=INTEGER},
+      dislike_number = #{dislikeNumber,jdbcType=INTEGER}
+    where reply_id = #{replyId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByCommentId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from comment_reply
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -50,9 +50,10 @@ public class TopicDetailApi extends BaseApi {
         return topicDetailListVo;
     }
 
-    @RequestMapping("/tucao/topic/detail/query/{topicChildrenId}")
+    @RequestMapping("/tucao/topic/detail/querycomment/{topicChildrenId}")
     public CommentReplyListVo queryCommentReply(@PathVariable String topicChildrenId){
         CommentReplyListVo commentReplyListVo = topicDetailService.selectCommentAndReplyByTopicChildrenId(topicChildrenId);
+        System.out.println("comment success");
         return commentReplyListVo;
     }
 
