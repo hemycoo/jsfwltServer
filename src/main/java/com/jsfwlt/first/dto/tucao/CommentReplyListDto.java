@@ -13,7 +13,7 @@ public class CommentReplyListDto {
 
     private String commentContent;
 
-    private Date commentTime;
+    private String commentTime;
 
     private String userId;
 
@@ -23,5 +23,5 @@ public class CommentReplyListDto {
 
     private Integer dislikeNumber;
 
-    private List<ReplyPo> replyPoList = new ArrayList<>();
+    private List<ReplyDto> replyList = new ArrayList<>();
 }
