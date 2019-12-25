@@ -1,4 +1,4 @@
-package com.jsfwlt.first.controller.tucao;
+package com.jsfwlt.first.controller.login;
 
 import com.jsfwlt.first.controller.BaseApi;
 import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
