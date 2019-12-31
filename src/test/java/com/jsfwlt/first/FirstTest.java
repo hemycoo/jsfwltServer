@@ -15,7 +15,7 @@ public class FirstTest extends BaseTest{
 
         final String reqJson ="src/test/resources/FirstTest/Test1.json";
 
-        String url = "http://localhost:8081/test";
+        String url = "http://localhost:8081/tucao/topic/queryAll";
 
         String result = template.getForObject(url,String.class);
         System.out.println("result: \n " + result);

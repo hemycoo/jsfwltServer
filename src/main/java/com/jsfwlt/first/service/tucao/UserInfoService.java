@@ -1,9 +1,9 @@
 package com.jsfwlt.first.service.tucao;
 
-import com.jsfwlt.first.mapper.tucao.LoginTokenPoMapper;
-import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
-import com.jsfwlt.first.po.tucao.LoginTokenPo;
-import com.jsfwlt.first.po.tucao.UserInfoPo;
+import com.jsfwlt.first.mapper.roast.LoginTokenPoMapper;
+import com.jsfwlt.first.mapper.roast.UserInfoMapper;
+import com.jsfwlt.first.po.roast.LoginTokenPo;
+import com.jsfwlt.first.po.roast.UserInfoPo;
 import com.jsfwlt.first.utils.EncryptUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

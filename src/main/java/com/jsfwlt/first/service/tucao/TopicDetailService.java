@@ -1,11 +1,11 @@
 package com.jsfwlt.first.service.tucao;
 
-import com.jsfwlt.first.dto.tucao.CommentReplyListDto;
-import com.jsfwlt.first.dto.tucao.ReplyDto;
-import com.jsfwlt.first.mapper.tucao.CommentPoMapper;
-import com.jsfwlt.first.mapper.tucao.ReplyPoMapper;
-import com.jsfwlt.first.po.tucao.CommentPo;
-import com.jsfwlt.first.po.tucao.ReplyPo;
+import com.jsfwlt.first.dto.roast.CommentReplyListDto;
+import com.jsfwlt.first.dto.roast.ReplyDto;
+import com.jsfwlt.first.mapper.roast.CommentPoMapper;
+import com.jsfwlt.first.mapper.roast.ReplyPoMapper;
+import com.jsfwlt.first.po.roast.CommentPo;
+import com.jsfwlt.first.po.roast.ReplyPo;
 import com.jsfwlt.first.utils.TimeUtils;
 import com.jsfwlt.first.vo.tucao.CommentReplyListVo;
 import org.springframework.beans.BeanUtils;

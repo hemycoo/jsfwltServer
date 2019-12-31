@@ -1,6 +1,6 @@
 package com.jsfwlt.first.vo.tucao;
 
-import com.jsfwlt.first.dto.tucao.CommentReplyListDto;
+import com.jsfwlt.first.dto.roast.CommentReplyListDto;
 import com.jsfwlt.first.vo.BaseVo;
 import lombok.Data;
 

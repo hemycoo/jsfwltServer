@@ -1,8 +1,8 @@
 package com.jsfwlt.first.controller.login;
 
 
-import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
-import com.jsfwlt.first.po.tucao.UserInfoPo;
+import com.jsfwlt.first.mapper.roast.UserInfoMapper;
+import com.jsfwlt.first.po.roast.UserInfoPo;
 import com.jsfwlt.first.service.tucao.UserInfoService;
 import com.jsfwlt.first.utils.EncryptUtils;
 import com.jsfwlt.first.utils.IdGenerator;

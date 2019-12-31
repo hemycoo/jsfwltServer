@@ -31,10 +31,10 @@
         <!--
             targetProject 为项目的路径
             targetPackage 为targetProject的相对路径
-            即targetPackage="com.jsfwlt.first.po.tucao"在targetProject="src/main/java"下
+            即targetPackage="com.jsfwlt.first.po.roast"在targetProject="src/main/java"下
         -->
         <!-- 生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.jsfwlt.first.po.tucao"
+        <javaModelGenerator targetPackage="com.jsfwlt.first.po.roast"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <!--从数据库返回的值被清理前后的空格-->
@@ -42,7 +42,7 @@
         </javaModelGenerator>
 
         <!-- mapper.xml映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="tucao"
+        <sqlMapGenerator targetPackage="roast"
                          targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
@@ -54,7 +54,7 @@
         type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.jsfwlt.first.mapper.tucao"
+                             targetPackage="com.jsfwlt.first.mapper.roast"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
@@ -64,7 +64,7 @@
         <!--<table tableName="user_info" domainObjectName="UserInfoPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="topic_detail" domainObjectName="TopicDetailPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table tableName="tucao_topic" domainObjectName="TucaoTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="roast_topic" domainObjectName="roastTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 <!--        <table tableName="topic_detail_comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <!--<table tableName="comment_reply" domainObjectName="ReplyPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <table tableName="login_token" domainObjectName="LoginTokenPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>

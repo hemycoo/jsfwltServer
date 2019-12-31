@@ -1,10 +1,10 @@
 package com.jsfwlt.first.interceptor;
 
-import com.jsfwlt.first.mapper.tucao.LoginTokenPoMapper;
-import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
-import com.jsfwlt.first.po.tucao.HostHolder;
-import com.jsfwlt.first.po.tucao.LoginTokenPo;
-import com.jsfwlt.first.po.tucao.UserInfoPo;
+import com.jsfwlt.first.mapper.roast.LoginTokenPoMapper;
+import com.jsfwlt.first.mapper.roast.UserInfoMapper;
+import com.jsfwlt.first.po.roast.HostHolder;
+import com.jsfwlt.first.po.roast.LoginTokenPo;
+import com.jsfwlt.first.po.roast.UserInfoPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

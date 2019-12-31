@@ -1,8 +1,8 @@
 package com.jsfwlt.first.controller.login;
 
 import com.jsfwlt.first.controller.BaseApi;
-import com.jsfwlt.first.mapper.tucao.UserInfoMapper;
-import com.jsfwlt.first.po.tucao.UserInfoPo;
+import com.jsfwlt.first.mapper.roast.UserInfoMapper;
+import com.jsfwlt.first.po.roast.UserInfoPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

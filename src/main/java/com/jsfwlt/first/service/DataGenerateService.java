@@ -1,11 +1,11 @@
 package com.jsfwlt.first.service;
 
-import com.jsfwlt.first.mapper.tucao.*;
-import com.jsfwlt.first.po.tucao.*;
-import com.jsfwlt.first.po.tucao.CommentPo;
-import com.jsfwlt.first.po.tucao.TopicDetailPo;
-import com.jsfwlt.first.po.tucao.TucaoTopicPo;
-import com.jsfwlt.first.po.tucao.UserInfoPo;
+import com.jsfwlt.first.mapper.roast.*;
+import com.jsfwlt.first.po.roast.*;
+import com.jsfwlt.first.po.roast.CommentPo;
+import com.jsfwlt.first.po.roast.TopicDetailPo;
+import com.jsfwlt.first.po.roast.TucaoTopicPo;
+import com.jsfwlt.first.po.roast.UserInfoPo;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
