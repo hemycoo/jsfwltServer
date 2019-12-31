@@ -1,4 +1,4 @@
-package com.jsfwlt.first.service.tucao;
+package com.jsfwlt.first.service.roast;
 
 import com.jsfwlt.first.dto.roast.CommentReplyListDto;
 import com.jsfwlt.first.dto.roast.ReplyDto;
@@ -7,7 +7,7 @@ import com.jsfwlt.first.mapper.roast.ReplyPoMapper;
 import com.jsfwlt.first.po.roast.CommentPo;
 import com.jsfwlt.first.po.roast.ReplyPo;
 import com.jsfwlt.first.utils.TimeUtils;
-import com.jsfwlt.first.vo.tucao.CommentReplyListVo;
+import com.jsfwlt.first.vo.roast.CommentReplyListVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.jsfwlt.first;
 
 import com.jsfwlt.first.service.DataGenerateService;
-import com.jsfwlt.first.service.tucao.TopicDetailService;
+import com.jsfwlt.first.service.roast.TopicDetailService;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

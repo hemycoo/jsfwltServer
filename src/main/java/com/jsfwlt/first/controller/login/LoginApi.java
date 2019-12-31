@@ -3,11 +3,11 @@ package com.jsfwlt.first.controller.login;
 
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;
 import com.jsfwlt.first.po.roast.UserInfoPo;
-import com.jsfwlt.first.service.tucao.UserInfoService;
+import com.jsfwlt.first.service.roast.UserInfoService;
 import com.jsfwlt.first.utils.EncryptUtils;
 import com.jsfwlt.first.utils.IdGenerator;
-import com.jsfwlt.first.vo.tucao.LoginVo;
-import com.jsfwlt.first.vo.tucao.RegisterVo;
+import com.jsfwlt.first.vo.roast.LoginVo;
+import com.jsfwlt.first.vo.roast.RegisterVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.jsfwlt.first.vo.tucao;
+package com.jsfwlt.first.vo.roast;
 
 
 import com.jsfwlt.first.dto.roast.TopicDetailDto;
