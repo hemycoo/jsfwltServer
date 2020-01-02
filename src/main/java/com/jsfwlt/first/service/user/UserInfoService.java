@@ -1,4 +1,4 @@
-package com.jsfwlt.first.service.roast;
+package com.jsfwlt.first.service.user;
 
 import com.jsfwlt.first.mapper.roast.LoginTokenPoMapper;
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;

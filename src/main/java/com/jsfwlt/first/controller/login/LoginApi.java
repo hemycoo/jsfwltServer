@@ -3,7 +3,7 @@ package com.jsfwlt.first.controller.login;
 
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;
 import com.jsfwlt.first.po.roast.UserInfoPo;
-import com.jsfwlt.first.service.roast.UserInfoService;
+import com.jsfwlt.first.service.user.UserInfoService;
 import com.jsfwlt.first.utils.EncryptUtils;
 import com.jsfwlt.first.utils.IdGenerator;
 import com.jsfwlt.first.vo.roast.LoginVo;
@@ -23,7 +23,7 @@ public class LoginApi {
     @Autowired
     UserInfoService userInfoService;
 
-    @RequestMapping("/register")
+    @GetMapping("/register")
     public RegisterVo userRegister(UserInfoPo userInfoPo){
         RegisterVo registerVo = new RegisterVo();
         userInfoPo.setUserId(IdGenerator.idGenerate("urid"));
@@ -39,7 +39,7 @@ public class LoginApi {
         return registerVo;
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public LoginVo userLogin(@RequestParam("userNickname") String userNickname, @RequestParam("userPassword") String userPassword,
     HttpServletResponse response){
         LoginVo loginVo = new LoginVo();
