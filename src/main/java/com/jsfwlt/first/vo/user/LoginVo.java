@@ -1,4 +1,4 @@
-package com.jsfwlt.first.vo.roast;
+package com.jsfwlt.first.vo.user;
 
 import com.jsfwlt.first.vo.BaseVo;
 import lombok.Data;

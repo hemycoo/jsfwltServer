@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jsfwlt.first.mapper.roast.LoginTokenPoMapper" >
-  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.roast.LoginTokenPo" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.user.LoginTokenPo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="token" property="token" jdbcType="VARCHAR" />
@@ -21,13 +21,13 @@
     delete from login_token
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
+  <insert id="insert" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
     insert into login_token (id, user_id, token, 
       expired, status)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
       #{expired,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
     insert into login_token
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
     update login_token
     <set >
       <if test="userId != null" >
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
     update login_token
     set user_id = #{userId,jdbcType=VARCHAR},
       token = #{token,jdbcType=VARCHAR},

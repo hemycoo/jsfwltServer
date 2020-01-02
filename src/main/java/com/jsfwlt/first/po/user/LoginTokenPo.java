@@ -1,4 +1,4 @@
-package com.jsfwlt.first.po.roast;
+package com.jsfwlt.first.po.user;
 
 import java.util.Date;
 

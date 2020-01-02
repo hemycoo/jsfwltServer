@@ -1,6 +1,6 @@
 package com.jsfwlt.first.mapper.roast;
 
-import com.jsfwlt.first.po.roast.LoginTokenPo;
+import com.jsfwlt.first.po.user.LoginTokenPo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

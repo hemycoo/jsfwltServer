@@ -1,5 +1,6 @@
 package com.jsfwlt.first.po.roast;
 
+import com.jsfwlt.first.po.user.UserInfoPo;
 import org.springframework.stereotype.Component;
 
 @Component

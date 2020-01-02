@@ -1,6 +1,6 @@
 package com.jsfwlt.first.mapper.roast;
 
-import com.jsfwlt.first.po.roast.UserInfoPo;
+import com.jsfwlt.first.po.user.UserInfoPo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

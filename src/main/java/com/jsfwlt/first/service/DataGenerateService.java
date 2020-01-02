@@ -5,7 +5,7 @@ import com.jsfwlt.first.po.roast.*;
 import com.jsfwlt.first.po.roast.CommentPo;
 import com.jsfwlt.first.po.roast.TopicDetailPo;
 import com.jsfwlt.first.po.roast.TucaoTopicPo;
-import com.jsfwlt.first.po.roast.UserInfoPo;
+import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

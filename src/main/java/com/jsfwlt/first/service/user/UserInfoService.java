@@ -2,8 +2,8 @@ package com.jsfwlt.first.service.user;
 
 import com.jsfwlt.first.mapper.roast.LoginTokenPoMapper;
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;
-import com.jsfwlt.first.po.roast.LoginTokenPo;
-import com.jsfwlt.first.po.roast.UserInfoPo;
+import com.jsfwlt.first.po.user.LoginTokenPo;
+import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.EncryptUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

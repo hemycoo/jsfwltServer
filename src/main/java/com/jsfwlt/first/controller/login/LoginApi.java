@@ -2,12 +2,12 @@ package com.jsfwlt.first.controller.login;
 
 
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;
-import com.jsfwlt.first.po.roast.UserInfoPo;
+import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.service.user.UserInfoService;
 import com.jsfwlt.first.utils.EncryptUtils;
 import com.jsfwlt.first.utils.IdGenerator;
-import com.jsfwlt.first.vo.roast.LoginVo;
-import com.jsfwlt.first.vo.roast.RegisterVo;
+import com.jsfwlt.first.vo.user.LoginVo;
+import com.jsfwlt.first.vo.user.RegisterVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
