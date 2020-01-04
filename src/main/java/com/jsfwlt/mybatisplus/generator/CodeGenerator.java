@@ -44,7 +44,7 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("jobob");
+        gc.setAuthor("hemycoo");
         gc.setOpen(false);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
@@ -80,12 +80,47 @@ public class CodeGenerator {
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
         // 自定义配置会被优先输出
+        //xml自定义配置
         focList.add(new FileOutConfig(templatePath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+//                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+//                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                //针对不同的路径xml文件最好自己定义位置
+                String xmlLocalLocation = "roast";
+                return projectPath + "/src/main/resources/mapper/" + xmlLocalLocation
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+            }
+        });
+        //mapper.java自定义配置
+        String templateMapperPath = "/templates/mapper.java.ftl";
+        //String templateMapperPath = "/templates/mapper.java.vm";
+        focList.add(new FileOutConfig(templateMapperPath) {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+//                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+//                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                //针对不同的路径xml文件最好自己定义位置
+                String xmlLocalLocation = "roast";
+                return projectPath + "/src/main/java/com/jsfwlt/first/mapper/" + xmlLocalLocation
+                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_JAVA;
+            }
+        });
+        //po.java自定义配置
+        String templateEntityPath = "/templates/entity.java.ftl";
+        //String templateEntityPath = "/templates/entity.java.vm";
+        focList.add(new FileOutConfig(templateEntityPath) {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+//                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+//                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                //针对不同的路径xml文件最好自己定义位置
+                String xmlLocalLocation = "roast";
+                return projectPath + "/src/main/java/com/jsfwlt/first/po/" + xmlLocalLocation
+                        + "/" + tableInfo.getEntityName() + "Po" + StringPool.DOT_JAVA;
             }
         });
         /*
@@ -110,7 +145,7 @@ public class CodeGenerator {
         // templateConfig.setService();
         // templateConfig.setController();
 
-        templateConfig.setXml(null);
+        //templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
 
         // 策略配置
