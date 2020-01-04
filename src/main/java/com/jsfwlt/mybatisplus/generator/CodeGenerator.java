@@ -73,9 +73,9 @@ public class CodeGenerator {
         };
 
         // 如果模板引擎是 freemarker
-        //String templatePath = "/templates/mapper.xml.ftl";
+        String templatePath = "/templates/mapper.xml.ftl";
         // 如果模板引擎是 velocity
-         String templatePath = "/templates/mapper.xml.vm";
+         //String templatePath = "/templates/mapper.xml.vm";
 
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
@@ -128,6 +128,7 @@ public class CodeGenerator {
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
+        //如果用的不是freemarker引擎，这个地方需要注释
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }
