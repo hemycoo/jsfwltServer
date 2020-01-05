@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
-    <classPathEntry  location="G:\tools\apache-maven-3.0.4\localrep\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
+    <classPathEntry  location="F:\tools\apache-maven-3.0.4\localrepository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
     <context id="MysqlTables" targetRuntime="MyBatis3">
 
         <commentGenerator>
@@ -34,7 +34,7 @@
             即targetPackage="com.jsfwlt.first.po.roast"在targetProject="src/main/java"下
         -->
         <!-- 生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.jsfwlt.first.po.roast"
+        <javaModelGenerator targetPackage="com.jsfwlt.first.po.user"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <!--从数据库返回的值被清理前后的空格-->
@@ -42,7 +42,7 @@
         </javaModelGenerator>
 
         <!-- mapper.xml映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="roast"
+        <sqlMapGenerator targetPackage="user"
                          targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
@@ -54,20 +54,20 @@
         type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.jsfwlt.first.mapper.roast"
+                             targetPackage="com.jsfwlt.first.mapper.user"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 指定要生成的表 -->
-        <!--<table tableName="test2" domainObjectName="Test2" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table tableName="user_info" domainObjectName="UserInfoPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="topic_detail" domainObjectName="TopicDetailPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table tableName="roast_topic" domainObjectName="roastTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-<!--        <table tableName="topic_detail_comment" domainObjectName="CommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table tableName="comment_reply" domainObjectName="ReplyPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table tableName="login_token" domainObjectName="LoginTokenPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--        <table tableName="comment_reply" domainObjectName="CommentReplyPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="user_info" domainObjectName="UserInfoPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--        <table tableName="topic_answer" domainObjectName="TopicAnswerPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="topic_answer_comment" domainObjectName="TopicAnswerCommentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="roast_topic" domainObjectName="RoastTopicPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="topic_content" domainObjectName="TopicContentPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="comment_reply" domainObjectName="ReplyPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+<!--        <table tableName="login_token" domainObjectName="LoginTokenPo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 
     </context>
 </generatorConfiguration>

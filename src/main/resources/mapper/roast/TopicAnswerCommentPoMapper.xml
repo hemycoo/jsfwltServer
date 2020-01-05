@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jsfwlt.first.mapper.roast.TopicAnswerCommentPoMapper" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+    <result column="topic_answer_id" property="topicAnswerId" jdbcType="INTEGER" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+    <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
+    <result column="dislike_number" property="dislikeNumber" jdbcType="INTEGER" />
+    <result column="logic_delete" property="logicDelete" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, comment_content, topic_answer_id, comment_time, user_id, user_nickname, 
+    like_number, dislike_number, logic_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topic_answer_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topic_answer_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
+    insert into topic_answer_comment (comment_id, comment_content, topic_answer_id, 
+      comment_time, user_id, user_nickname, 
+      like_number, dislike_number, logic_delete
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, #{topicAnswerId,jdbcType=INTEGER}, 
+      #{commentTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{userNickname,jdbcType=VARCHAR}, 
+      #{likeNumber,jdbcType=INTEGER}, #{dislikeNumber,jdbcType=INTEGER}, #{logicDelete,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
+    insert into topic_answer_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+      <if test="topicAnswerId != null" >
+        topic_answer_id,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userNickname != null" >
+        user_nickname,
+      </if>
+      <if test="likeNumber != null" >
+        like_number,
+      </if>
+      <if test="dislikeNumber != null" >
+        dislike_number,
+      </if>
+      <if test="logicDelete != null" >
+        logic_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicAnswerId != null" >
+        #{topicAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null" >
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNumber != null" >
+        #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeNumber != null" >
+        #{dislikeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="logicDelete != null" >
+        #{logicDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
+    update topic_answer_comment
+    <set >
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicAnswerId != null" >
+        topic_answer_id = #{topicAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null" >
+        user_nickname = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNumber != null" >
+        like_number = #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeNumber != null" >
+        dislike_number = #{dislikeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="logicDelete != null" >
+        logic_delete = #{logicDelete,jdbcType=BIT},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
+    update topic_answer_comment
+    set comment_content = #{commentContent,jdbcType=VARCHAR},
+      topic_answer_id = #{topicAnswerId,jdbcType=INTEGER},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_nickname = #{userNickname,jdbcType=VARCHAR},
+      like_number = #{likeNumber,jdbcType=INTEGER},
+      dislike_number = #{dislikeNumber,jdbcType=INTEGER},
+      logic_delete = #{logicDelete,jdbcType=BIT}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

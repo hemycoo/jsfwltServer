@@ -1,7 +1,11 @@
 package com.jsfwlt.first.po.user;
 
+import java.util.Date;
+
 public class UserInfoPo {
-    private String userId;
+    private Integer userId;
+
+    private String userName;
 
     private String userNickname;
 
@@ -11,12 +15,26 @@ public class UserInfoPo {
 
     private String userEmail;
 
-    public String getUserId() {
+    private String userSalt;
+
+    private Date createTime;
+
+    private Date modifyTime;
+
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
     public String getUserNickname() {
@@ -49,5 +67,29 @@ public class UserInfoPo {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail == null ? null : userEmail.trim();
+    }
+
+    public String getUserSalt() {
+        return userSalt;
+    }
+
+    public void setUserSalt(String userSalt) {
+        this.userSalt = userSalt == null ? null : userSalt.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }
