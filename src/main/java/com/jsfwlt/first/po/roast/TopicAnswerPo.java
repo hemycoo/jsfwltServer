@@ -7,10 +7,6 @@ public class TopicAnswerPo {
 
     private String content;
 
-    private Date createTime;
-
-    private Date modifyTime;
-
     private Integer topicId;
 
     private Integer userId;
@@ -22,6 +18,10 @@ public class TopicAnswerPo {
     private Integer dislikeNumber;
 
     private Boolean logicDelete;
+
+    private Date createTime;
+
+    private Date modifyTime;
 
     public Integer getTopicAnswerId() {
         return topicAnswerId;
@@ -37,22 +37,6 @@ public class TopicAnswerPo {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
     }
 
     public Integer getTopicId() {
@@ -101,5 +85,21 @@ public class TopicAnswerPo {
 
     public void setLogicDelete(Boolean logicDelete) {
         this.logicDelete = logicDelete;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

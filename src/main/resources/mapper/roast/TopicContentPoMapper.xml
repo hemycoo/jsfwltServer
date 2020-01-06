@@ -5,9 +5,11 @@
     <id column="content_id" property="contentId" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="logic_delete" property="logicDelete" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    content_id, content, logic_delete
+    content_id, content, logic_delete, create_time, modify_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,10 +22,10 @@
     where content_id = #{contentId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jsfwlt.first.po.roast.TopicContentPo" >
-    insert into topic_content (content_id, content, logic_delete
-      )
-    values (#{contentId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{logicDelete,jdbcType=BIT}
-      )
+    insert into topic_content (content_id, content, logic_delete, 
+      create_time, modify_time)
+    values (#{contentId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{logicDelete,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jsfwlt.first.po.roast.TopicContentPo" >
     insert into topic_content
@@ -37,6 +39,12 @@
       <if test="logicDelete != null" >
         logic_delete,
       </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="contentId != null" >
@@ -47,6 +55,12 @@
       </if>
       <if test="logicDelete != null" >
         #{logicDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -59,13 +73,21 @@
       <if test="logicDelete != null" >
         logic_delete = #{logicDelete,jdbcType=BIT},
       </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where content_id = #{contentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.roast.TopicContentPo" >
     update topic_content
     set content = #{content,jdbcType=VARCHAR},
-      logic_delete = #{logicDelete,jdbcType=BIT}
+      logic_delete = #{logicDelete,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where content_id = #{contentId,jdbcType=INTEGER}
   </update>
 </mapper>

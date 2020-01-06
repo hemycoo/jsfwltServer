@@ -23,11 +23,11 @@ public class RoastTopicPo {
 
     private String userNickname;
 
+    private Boolean logicDelete;
+
     private Date createTime;
 
     private Date modifyTime;
-
-    private Boolean logicDelete;
 
     public Integer getTopicId() {
         return topicId;
@@ -109,6 +109,14 @@ public class RoastTopicPo {
         this.userNickname = userNickname == null ? null : userNickname.trim();
     }
 
+    public Boolean getLogicDelete() {
+        return logicDelete;
+    }
+
+    public void setLogicDelete(Boolean logicDelete) {
+        this.logicDelete = logicDelete;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -123,13 +131,5 @@ public class RoastTopicPo {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-    public Boolean getLogicDelete() {
-        return logicDelete;
-    }
-
-    public void setLogicDelete(Boolean logicDelete) {
-        this.logicDelete = logicDelete;
     }
 }

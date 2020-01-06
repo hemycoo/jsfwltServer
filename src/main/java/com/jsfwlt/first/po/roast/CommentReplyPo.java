@@ -13,8 +13,6 @@ public class CommentReplyPo {
 
     private Integer commentId;
 
-    private Date replyTime;
-
     private Integer userId;
 
     private String userNickname;
@@ -24,6 +22,10 @@ public class CommentReplyPo {
     private Integer dislikeNumber;
 
     private Boolean logicDelete;
+
+    private Date createTime;
+
+    private Date modifyTime;
 
     public Integer getReplyId() {
         return replyId;
@@ -65,14 +67,6 @@ public class CommentReplyPo {
         this.commentId = commentId;
     }
 
-    public Date getReplyTime() {
-        return replyTime;
-    }
-
-    public void setReplyTime(Date replyTime) {
-        this.replyTime = replyTime;
-    }
-
     public Integer getUserId() {
         return userId;
     }
@@ -111,5 +105,21 @@ public class CommentReplyPo {
 
     public void setLogicDelete(Boolean logicDelete) {
         this.logicDelete = logicDelete;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

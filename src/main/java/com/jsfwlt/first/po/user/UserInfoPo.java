@@ -15,8 +15,6 @@ public class UserInfoPo {
 
     private String userEmail;
 
-    private String userSalt;
-
     private Date createTime;
 
     private Date modifyTime;
@@ -67,14 +65,6 @@ public class UserInfoPo {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail == null ? null : userEmail.trim();
-    }
-
-    public String getUserSalt() {
-        return userSalt;
-    }
-
-    public void setUserSalt(String userSalt) {
-        this.userSalt = userSalt == null ? null : userSalt.trim();
     }
 
     public Date getCreateTime() {

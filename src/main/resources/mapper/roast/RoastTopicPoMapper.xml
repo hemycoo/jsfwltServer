@@ -12,13 +12,13 @@
     <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+    <result column="logic_delete" property="logicDelete" jdbcType="BIT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
-    <result column="logic_delete" property="logicDelete" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
     topic_id, title, content_abstract, content_id, comment_number, like_number, dislike_number, 
-    image_url, user_id, user_nickname, create_time, modify_time, logic_delete
+    image_url, user_id, user_nickname, logic_delete, create_time, modify_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -34,13 +34,13 @@
     insert into roast_topic (topic_id, title, content_abstract, 
       content_id, comment_number, like_number, 
       dislike_number, image_url, user_id, 
-      user_nickname, create_time, modify_time, 
-      logic_delete)
+      user_nickname, logic_delete, create_time, 
+      modify_time)
     values (#{topicId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{contentAbstract,jdbcType=VARCHAR}, 
       #{contentId,jdbcType=INTEGER}, #{commentNumber,jdbcType=INTEGER}, #{likeNumber,jdbcType=INTEGER}, 
       #{dislikeNumber,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{userNickname,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{logicDelete,jdbcType=BIT})
+      #{userNickname,jdbcType=VARCHAR}, #{logicDelete,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jsfwlt.first.po.roast.RoastTopicPo" >
     insert into roast_topic
@@ -75,14 +75,14 @@
       <if test="userNickname != null" >
         user_nickname,
       </if>
+      <if test="logicDelete != null" >
+        logic_delete,
+      </if>
       <if test="createTime != null" >
         create_time,
       </if>
       <if test="modifyTime != null" >
         modify_time,
-      </if>
-      <if test="logicDelete != null" >
-        logic_delete,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -116,14 +116,14 @@
       <if test="userNickname != null" >
         #{userNickname,jdbcType=VARCHAR},
       </if>
+      <if test="logicDelete != null" >
+        #{logicDelete,jdbcType=BIT},
+      </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifyTime != null" >
         #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="logicDelete != null" >
-        #{logicDelete,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -157,14 +157,14 @@
       <if test="userNickname != null" >
         user_nickname = #{userNickname,jdbcType=VARCHAR},
       </if>
+      <if test="logicDelete != null" >
+        logic_delete = #{logicDelete,jdbcType=BIT},
+      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifyTime != null" >
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="logicDelete != null" >
-        logic_delete = #{logicDelete,jdbcType=BIT},
       </if>
     </set>
     where topic_id = #{topicId,jdbcType=INTEGER}
@@ -180,9 +180,9 @@
       image_url = #{imageUrl,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       user_nickname = #{userNickname,jdbcType=VARCHAR},
+      logic_delete = #{logicDelete,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      logic_delete = #{logicDelete,jdbcType=BIT}
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where topic_id = #{topicId,jdbcType=INTEGER}
   </update>
 </mapper>

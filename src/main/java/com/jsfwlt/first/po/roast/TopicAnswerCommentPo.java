@@ -9,8 +9,6 @@ public class TopicAnswerCommentPo {
 
     private Integer topicAnswerId;
 
-    private Date commentTime;
-
     private Integer userId;
 
     private String userNickname;
@@ -20,6 +18,10 @@ public class TopicAnswerCommentPo {
     private Integer dislikeNumber;
 
     private Boolean logicDelete;
+
+    private Date createTime;
+
+    private Date modifyTime;
 
     public Integer getCommentId() {
         return commentId;
@@ -43,14 +45,6 @@ public class TopicAnswerCommentPo {
 
     public void setTopicAnswerId(Integer topicAnswerId) {
         this.topicAnswerId = topicAnswerId;
-    }
-
-    public Date getCommentTime() {
-        return commentTime;
-    }
-
-    public void setCommentTime(Date commentTime) {
-        this.commentTime = commentTime;
     }
 
     public Integer getUserId() {
@@ -91,5 +85,21 @@ public class TopicAnswerCommentPo {
 
     public void setLogicDelete(Boolean logicDelete) {
         this.logicDelete = logicDelete;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

@@ -1,9 +1,7 @@
 package com.jsfwlt.first.mapper.roast;
 
-import com.jsfwlt.first.po.user.LoginTokenPo;
-import org.apache.ibatis.annotations.Mapper;
+import com.jsfwlt.first.po.roast.LoginTokenPo;
 
-@Mapper
 public interface LoginTokenPoMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,6 +14,4 @@ public interface LoginTokenPoMapper {
     int updateByPrimaryKeySelective(LoginTokenPo record);
 
     int updateByPrimaryKey(LoginTokenPo record);
-
-    LoginTokenPo selectByToken(String token);
 }

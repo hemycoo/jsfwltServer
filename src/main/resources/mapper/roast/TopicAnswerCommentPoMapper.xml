@@ -5,16 +5,17 @@
     <id column="comment_id" property="commentId" jdbcType="INTEGER" />
     <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
     <result column="topic_answer_id" property="topicAnswerId" jdbcType="INTEGER" />
-    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
     <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
     <result column="dislike_number" property="dislikeNumber" jdbcType="INTEGER" />
     <result column="logic_delete" property="logicDelete" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    comment_id, comment_content, topic_answer_id, comment_time, user_id, user_nickname, 
-    like_number, dislike_number, logic_delete
+    comment_id, comment_content, topic_answer_id, user_id, user_nickname, like_number, 
+    dislike_number, logic_delete, create_time, modify_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,13 +29,13 @@
   </delete>
   <insert id="insert" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
     insert into topic_answer_comment (comment_id, comment_content, topic_answer_id, 
-      comment_time, user_id, user_nickname, 
-      like_number, dislike_number, logic_delete
-      )
+      user_id, user_nickname, like_number, 
+      dislike_number, logic_delete, create_time, 
+      modify_time)
     values (#{commentId,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, #{topicAnswerId,jdbcType=INTEGER}, 
-      #{commentTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{userNickname,jdbcType=VARCHAR}, 
-      #{likeNumber,jdbcType=INTEGER}, #{dislikeNumber,jdbcType=INTEGER}, #{logicDelete,jdbcType=BIT}
-      )
+      #{userId,jdbcType=INTEGER}, #{userNickname,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}, 
+      #{dislikeNumber,jdbcType=INTEGER}, #{logicDelete,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
     insert into topic_answer_comment
@@ -47,9 +48,6 @@
       </if>
       <if test="topicAnswerId != null" >
         topic_answer_id,
-      </if>
-      <if test="commentTime != null" >
-        comment_time,
       </if>
       <if test="userId != null" >
         user_id,
@@ -66,6 +64,12 @@
       <if test="logicDelete != null" >
         logic_delete,
       </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="commentId != null" >
@@ -76,9 +80,6 @@
       </if>
       <if test="topicAnswerId != null" >
         #{topicAnswerId,jdbcType=INTEGER},
-      </if>
-      <if test="commentTime != null" >
-        #{commentTime,jdbcType=TIMESTAMP},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
@@ -95,6 +96,12 @@
       <if test="logicDelete != null" >
         #{logicDelete,jdbcType=BIT},
       </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.roast.TopicAnswerCommentPo" >
@@ -105,9 +112,6 @@
       </if>
       <if test="topicAnswerId != null" >
         topic_answer_id = #{topicAnswerId,jdbcType=INTEGER},
-      </if>
-      <if test="commentTime != null" >
-        comment_time = #{commentTime,jdbcType=TIMESTAMP},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
@@ -124,6 +128,12 @@
       <if test="logicDelete != null" >
         logic_delete = #{logicDelete,jdbcType=BIT},
       </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
@@ -131,12 +141,13 @@
     update topic_answer_comment
     set comment_content = #{commentContent,jdbcType=VARCHAR},
       topic_answer_id = #{topicAnswerId,jdbcType=INTEGER},
-      comment_time = #{commentTime,jdbcType=TIMESTAMP},
       user_id = #{userId,jdbcType=INTEGER},
       user_nickname = #{userNickname,jdbcType=VARCHAR},
       like_number = #{likeNumber,jdbcType=INTEGER},
       dislike_number = #{dislikeNumber,jdbcType=INTEGER},
-      logic_delete = #{logicDelete,jdbcType=BIT}
+      logic_delete = #{logicDelete,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
 </mapper>

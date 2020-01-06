@@ -1,11 +1,17 @@
 package com.jsfwlt.first.po.roast;
 
+import java.util.Date;
+
 public class TopicContentPo {
     private Integer contentId;
 
     private String content;
 
     private Boolean logicDelete;
+
+    private Date createTime;
+
+    private Date modifyTime;
 
     public Integer getContentId() {
         return contentId;
@@ -29,5 +35,21 @@ public class TopicContentPo {
 
     public void setLogicDelete(Boolean logicDelete) {
         this.logicDelete = logicDelete;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

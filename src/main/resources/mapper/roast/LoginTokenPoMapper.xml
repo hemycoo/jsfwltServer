@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jsfwlt.first.mapper.roast.LoginTokenPoMapper" >
-  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.user.LoginTokenPo" >
+  <resultMap id="BaseResultMap" type="com.jsfwlt.first.po.roast.LoginTokenPo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="token" property="token" jdbcType="VARCHAR" />
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
@@ -21,13 +21,13 @@
     delete from login_token
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
+  <insert id="insert" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
     insert into login_token (id, user_id, token, 
       expired, status)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, 
       #{expired,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
+  <insert id="insertSelective" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
     insert into login_token
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -51,7 +51,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="token != null" >
         #{token,jdbcType=VARCHAR},
@@ -64,11 +64,11 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
     update login_token
     <set >
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="token != null" >
         token = #{token,jdbcType=VARCHAR},
@@ -82,18 +82,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.user.LoginTokenPo" >
+  <update id="updateByPrimaryKey" parameterType="com.jsfwlt.first.po.roast.LoginTokenPo" >
     update login_token
-    set user_id = #{userId,jdbcType=VARCHAR},
+    set user_id = #{userId,jdbcType=INTEGER},
       token = #{token,jdbcType=VARCHAR},
       expired = #{expired,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByToken" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from login_token
-    where token = #{token,jdbcType=VARCHAR}
-  </select>
 </mapper>
