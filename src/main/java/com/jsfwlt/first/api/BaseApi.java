@@ -1,4 +1,4 @@
-package com.jsfwlt.first.controller;
+package com.jsfwlt.first.api;
 
 
 import org.springframework.web.bind.annotation.RestController;

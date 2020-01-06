@@ -2,6 +2,8 @@ package com.jsfwlt.first.mapper.roast;
 
 import com.jsfwlt.first.po.roast.TopicAnswerPo;
 
+import java.util.List;
+
 public interface TopicAnswerPoMapper {
     int deleteByPrimaryKey(Integer topicAnswerId);
 
@@ -14,4 +16,6 @@ public interface TopicAnswerPoMapper {
     int updateByPrimaryKeySelective(TopicAnswerPo record);
 
     int updateByPrimaryKey(TopicAnswerPo record);
+
+    List<TopicAnswerPo> selectByTopicId(String topicId);
 }

@@ -44,8 +44,8 @@ public class UserInfoService {
             return map;
         }
         map.put("userId",userInfoPo.getUserId());
-        String token = addLoginTicket(userInfoPo.getUserId());
-        map.put("token",token);
+        //String token = addLoginTicket(userInfoPo.getUserId());
+        //map.put("token",token);
         return map;
     }
     //添加ticket
@@ -57,7 +57,7 @@ public class UserInfoService {
         loginTokenPo.setToken(UUID.randomUUID().toString().replaceAll("-", ""));
         loginTokenPo.setExpired(date);
         loginTokenPo.setStatus(0);
-        loginTokenPoMapper.insert(loginTokenPo);
+        //loginTokenPoMapper.insert(loginTokenPo);
         return loginTokenPo.getToken();
     }
 

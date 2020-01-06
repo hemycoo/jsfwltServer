@@ -1,4 +1,4 @@
-package com.jsfwlt.first.controller.login;
+package com.jsfwlt.first.api.login;
 
 
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;
@@ -26,7 +26,7 @@ public class LoginApi {
     @GetMapping("/register")
     public RegisterVo userRegister(UserInfoPo userInfoPo){
         RegisterVo registerVo = new RegisterVo();
-        userInfoPo.setUserId(IdGenerator.idGenerate("urid"));
+        //userInfoPo.setUserId(IdGenerator.idGenerate("urid"));
         String userNickname = userInfoPo.getUserNickname();
         if(userInfoMapper.selectByUserNickname(userNickname) != null){
             registerVo.setStatus("201");   //暂时用201表示用户已存在

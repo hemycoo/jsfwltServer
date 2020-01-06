@@ -1,6 +1,6 @@
-package com.jsfwlt.first.controller.roast;
+package com.jsfwlt.first.api.roast;
 
-import com.jsfwlt.first.controller.BaseApi;
+import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.dto.roast.TucaoTopicDto;
 import com.jsfwlt.first.mapper.roast.TucaoTopicPoMapper;
 import com.jsfwlt.first.po.roast.TucaoTopicPo;

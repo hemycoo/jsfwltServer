@@ -150,4 +150,9 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where topic_answer_id = #{topicAnswerId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByTopicId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from topic_detail
+    where topic_id = #{topicId,jdbcType=VARCHAR}
+  </select>
 </mapper>

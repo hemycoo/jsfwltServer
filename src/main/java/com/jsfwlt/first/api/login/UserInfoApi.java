@@ -1,6 +1,6 @@
-package com.jsfwlt.first.controller.login;
+package com.jsfwlt.first.api.login;
 
-import com.jsfwlt.first.controller.BaseApi;
+import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.mapper.roast.UserInfoMapper;
 import com.jsfwlt.first.po.user.UserInfoPo;
 import org.springframework.beans.factory.annotation.Autowired;

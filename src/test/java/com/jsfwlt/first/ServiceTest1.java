@@ -17,7 +17,7 @@ public class ServiceTest1 extends BaseTest {
     @Test
     public void topicDetailGenerate(){
         //serviceTest.dataGenerate();
-        serviceTest.generateData();
+        //serviceTest.generateData();
         System.out.println("test generate success");
     }
 
@@ -34,7 +34,7 @@ public class ServiceTest1 extends BaseTest {
 
     @Test
     public void insertToUserInfoTest(){
-        serviceTest.insertToUserInfo();
+        //serviceTest.insertToUserInfo();
     }
 
     @Test

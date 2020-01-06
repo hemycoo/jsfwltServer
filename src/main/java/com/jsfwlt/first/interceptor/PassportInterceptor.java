@@ -39,14 +39,14 @@ public class PassportInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        if(token != null){
-            LoginTokenPo loginTokenPo = loginTokenPoMapper.selectByToken(token);
-            if(loginTokenPo == null || loginTokenPo.getExpired().before(new Date()) || loginTokenPo.getStatus() != 0){
-                return true;
-            }
-            UserInfoPo userInfoPo = userInfoMapper.selectByPrimaryKey(loginTokenPo.getUserId());
-            hostHolder.setUserInfoPo(userInfoPo);
-        }
+//        if(token != null){
+//            LoginTokenPo loginTokenPo = loginTokenPoMapper.selectByToken(token);
+//            if(loginTokenPo == null || loginTokenPo.getExpired().before(new Date()) || loginTokenPo.getStatus() != 0){
+//                return true;
+//            }
+//            UserInfoPo userInfoPo = userInfoMapper.selectByPrimaryKey(loginTokenPo.getUserId());
+//            hostHolder.setUserInfoPo(userInfoPo);
+//        }
         return true;
     }
 

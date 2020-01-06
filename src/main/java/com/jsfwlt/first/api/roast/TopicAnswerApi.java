@@ -1,9 +1,8 @@
-package com.jsfwlt.first.controller.roast;
+package com.jsfwlt.first.api.roast;
 
-import com.jsfwlt.first.controller.BaseApi;
+import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.TopicAnswerPoMapper;
-import com.jsfwlt.first.mapper.roast.TopicDetailMapper;
 import com.jsfwlt.first.po.roast.TopicAnswerPo;
 import com.jsfwlt.first.service.roast.TopicDetailService;
 import com.jsfwlt.first.vo.roast.CommentReplyListVo;
@@ -19,12 +18,9 @@ import static com.jsfwlt.first.utils.TimeUtils.date2String;
 
 
 @RestController
-public class TopicDetailApi extends BaseApi {
+public class TopicAnswerApi extends BaseApi {
 
-    //todo 待删除
-    @Autowired(required = false)
-    private TopicDetailMapper topicDetailMapper;
-
+    @Autowired
     private TopicAnswerPoMapper topicAnswerPoMapper;
 
     @Autowired
@@ -32,25 +28,25 @@ public class TopicDetailApi extends BaseApi {
 
     private int queryNum = 0; //测试使用
 
-    @RequestMapping("/tucao/topic/detail/query/{topicId}")
+    @RequestMapping("/tucao/topic/answer/query/{topicId}")
     public TopicDetailListResp queryTopicDetail(@PathVariable("topicId") String req) throws Exception {
         System.out.println("req  : " + req);
-        TopicDetailListResp topicDetailListVo = new TopicDetailListResp();
-        List<TopicAnswerPo> topicDetailList = topicAnswerPoMapper.selectByTopicId(req);
-        if (topicDetailList.size() == 0 || topicDetailList.isEmpty()){
-            throw new SelfException("000","sorry, query no data");
+        TopicDetailListResp topicDetailListResp = new TopicDetailListResp();
+        List<TopicAnswerPo> topicAnswerList = topicAnswerPoMapper.selectByTopicId(req);
+        if (topicAnswerList.size() == 0 || topicAnswerList.isEmpty()){
+            throw new SelfException("000","sorry, query no data, your topicId is "+ req);
         }
-        System.out.println(date2String(topicDetailList.get(0).getCreateTime()));
-        for (TopicAnswerPo list : topicDetailList){
+        System.out.println(date2String(topicAnswerList.get(0).getCreateTime()));
+        for (TopicAnswerPo list : topicAnswerList){
             TopicDetailDto topicDetailDto = new TopicDetailDto();
             BeanUtils.copyProperties(list,topicDetailDto);
             topicDetailDto.setCreationTime(date2String( list.getCreateTime()));
             topicDetailDto.setModificationTime(date2String(list.getModifyTime()));
-            topicDetailListVo.getTopicDetaildata().add(topicDetailDto);
+            topicDetailListResp.getTopicDetaildata().add(topicDetailDto);
         }
         queryNum++;
         System.out.println("query success" + queryNum);
-        return topicDetailListVo;
+        return topicDetailListResp;
     }
 
     @RequestMapping("/tucao/topic/detail/querycomment/{topicChildrenId}")

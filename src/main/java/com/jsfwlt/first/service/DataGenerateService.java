@@ -3,7 +3,6 @@ package com.jsfwlt.first.service;
 import com.jsfwlt.first.mapper.roast.*;
 import com.jsfwlt.first.po.roast.*;
 import com.jsfwlt.first.po.roast.CommentPo;
-import com.jsfwlt.first.po.roast.TopicDetailPo;
 import com.jsfwlt.first.po.roast.TucaoTopicPo;
 import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.IdGenerator;
@@ -21,8 +20,6 @@ public class DataGenerateService {
     @Autowired(required = false)
     private CommentPoMapper commentPoMapper;
 
-    @Autowired(required = false)
-    private TopicDetailMapper topicDetailMapper;
 
     @Autowired(required = false)
     private TucaoTopicPoMapper tucaoTopicPoMapper;
@@ -46,24 +43,24 @@ public class DataGenerateService {
         }
     }
 
-    //生成话题详情数据
-    public void generateData() {
-        for (int i = 50; i < 60; i++) {
-            TopicDetailPo tp = new TopicDetailPo();
-            tp.setCommentId("cid" + i);
-            tp.setContent("content" + i);
-            tp.setCreationTime(new Date());
-            tp.setDislikeNumber(i);
-            tp.setLikeNumber(i + 1);
-            tp.setModificationTime(new Date(System.currentTimeMillis()));
-            tp.setTopicChildrenId(IdGenerator.idGenerate("tcid"));
-            tp.setTopicId("topicId");
-            tp.setUserId("userId" + i);
-            tp.setUserNickname("name" + i);
-            topicDetailMapper.insert(tp);
-        }
-        System.out.println("generate success");
-    }
+//    //生成话题详情数据
+//    public void generateData() {
+//        for (int i = 50; i < 60; i++) {
+//            TopicDetailPo tp = new TopicDetailPo();
+//            tp.setCommentId("cid" + i);
+//            tp.setContent("content" + i);
+//            tp.setCreationTime(new Date());
+//            tp.setDislikeNumber(i);
+//            tp.setLikeNumber(i + 1);
+//            tp.setModificationTime(new Date(System.currentTimeMillis()));
+//            tp.setTopicChildrenId(IdGenerator.idGenerate("tcid"));
+//            tp.setTopicId("topicId");
+//            tp.setUserId("userId" + i);
+//            tp.setUserNickname("name" + i);
+//            topicDetailMapper.insert(tp);
+//        }
+//        System.out.println("generate success");
+//    }
 
     //生成评论回复数据
     public void generateCommentReply(){
@@ -103,18 +100,18 @@ public class DataGenerateService {
         System.out.println("插入tucao_topic表成功");
     }
 
-    //生成并插入user_info表的测试数据
-    public void insertToUserInfo() {
-        UserInfoPo userInfoPo = new UserInfoPo();
-        for (int i = 0; i < 15; i++) {
-            userInfoPo.setUserId("userId" + i);
-            userInfoPo.setUserNickname("nick" + i);
-            userInfoPo.setUserPassword("userPassword" + i);
-            userInfoPo.setUserPhone("userPhone" + i);
-            userInfoPo.setUserEmail("userEmail" + i);
-            userInfoMapper.insert(userInfoPo);
-        }
-        System.out.println("插入user_info表成功");
-    }
+//    //生成并插入user_info表的测试数据
+//    public void insertToUserInfo() {
+//        UserInfoPo userInfoPo = new UserInfoPo();
+//        for (int i = 0; i < 15; i++) {
+//            userInfoPo.setUserId("userId" + i);
+//            userInfoPo.setUserNickname("nick" + i);
+//            userInfoPo.setUserPassword("userPassword" + i);
+//            userInfoPo.setUserPhone("userPhone" + i);
+//            userInfoPo.setUserEmail("userEmail" + i);
+//            userInfoMapper.insert(userInfoPo);
+//        }
+//        System.out.println("插入user_info表成功");
+//    }
 
 }
