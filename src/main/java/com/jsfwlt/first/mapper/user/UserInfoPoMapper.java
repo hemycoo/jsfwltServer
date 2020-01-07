@@ -1,7 +1,9 @@
 package com.jsfwlt.first.mapper.user;
 
 import com.jsfwlt.first.po.user.UserInfoPo;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserInfoPoMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -14,4 +16,6 @@ public interface UserInfoPoMapper {
     int updateByPrimaryKeySelective(UserInfoPo record);
 
     int updateByPrimaryKey(UserInfoPo record);
+
+    UserInfoPo selectByUserName(String userName);
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 public class LoginTokenPo {
     private Integer id;
 
-    private String userId;
+    private int userId;
 
     private String token;
 
@@ -21,12 +21,12 @@ public class LoginTokenPo {
         this.id = id;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getToken() {

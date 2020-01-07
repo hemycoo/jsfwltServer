@@ -1,10 +1,7 @@
 package com.jsfwlt.first.interceptor;
 
 import com.jsfwlt.first.mapper.roast.LoginTokenPoMapper;
-import com.jsfwlt.first.mapper.roast.UserInfoMapper;
 import com.jsfwlt.first.po.roast.HostHolder;
-import com.jsfwlt.first.po.user.LoginTokenPo;
-import com.jsfwlt.first.po.user.UserInfoPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -13,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 
 @Component
 public class PassportInterceptor implements HandlerInterceptor {
@@ -21,8 +17,6 @@ public class PassportInterceptor implements HandlerInterceptor {
     @Autowired(required = false)
     LoginTokenPoMapper loginTokenPoMapper;
 
-    @Autowired(required = false)
-    UserInfoMapper userInfoMapper;
 
     @Autowired
     private HostHolder hostHolder;

@@ -2,6 +2,7 @@ package com.jsfwlt.first.api.roast;
 
 import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.dto.roast.TucaoTopicDto;
+import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.TucaoTopicPoMapper;
 import com.jsfwlt.first.po.roast.TucaoTopicPo;
 import com.jsfwlt.first.utils.TimeUtils;
@@ -17,17 +18,17 @@ import java.util.*;
 
 
 @RestController
-public class TucaoTopicApi extends BaseApi {
+public class RoastTopicApi extends BaseApi {
 
     @Autowired(required = false)
     private TucaoTopicPoMapper tucaoTopicPoMapper;
 
     //根据吐槽的ID查询
     @GetMapping("/tucao/topic/query/{topicId}")
-    public TucaoTopicVo queryTucaoTopic(@PathVariable("topicId")String topicId)throws Exception{
+    public TucaoTopicVo queryTucaoTopic(@PathVariable("topicId")String topicId){
         TucaoTopicPo tucaoTopicPo = tucaoTopicPoMapper.selectByPrimaryKey(topicId);
         if(tucaoTopicPo == null){
-            throw new Exception("sorry query no data");
+            throw new SelfException("001","sorry query no data");
         }
         TucaoTopicVo tucaoTopicVo = new TucaoTopicVo();
         TucaoTopicDto tucaoTopicDto = new TucaoTopicDto();

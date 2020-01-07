@@ -1,6 +1,7 @@
 package com.jsfwlt.first.service;
 
 import com.jsfwlt.first.mapper.roast.*;
+import com.jsfwlt.first.mapper.user.UserInfoPoMapper;
 import com.jsfwlt.first.po.roast.*;
 import com.jsfwlt.first.po.roast.CommentPo;
 import com.jsfwlt.first.po.roast.TucaoTopicPo;
@@ -25,7 +26,7 @@ public class DataGenerateService {
     private TucaoTopicPoMapper tucaoTopicPoMapper;
 
     @Autowired(required = false)
-    private UserInfoMapper userInfoMapper;
+    private UserInfoPoMapper userInfoPoMapper;
 
     //生成评论详情数据
     public void commentGenerate() {
