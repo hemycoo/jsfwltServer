@@ -1,7 +1,7 @@
 package com.jsfwlt.first;
 
 import com.jsfwlt.first.service.DataGenerateService;
-import com.jsfwlt.first.service.roast.TopicDetailService;
+import com.jsfwlt.first.service.roast.TopicAnswerService;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ public class ServiceTest1 extends BaseTest {
     private DataGenerateService serviceTest;
 
     @Autowired
-    private TopicDetailService topicDetailService;
+    private TopicAnswerService topicAnswerService;
 
     @Test
     public void topicDetailGenerate(){
@@ -21,11 +21,11 @@ public class ServiceTest1 extends BaseTest {
         System.out.println("test generate success");
     }
 
-    @Test
-    public void commentGenerate(){
-        serviceTest.commentGenerate();
-        System.out.println("test generate success");
-    }
+//    @Test
+//    public void commentGenerate(){
+//        serviceTest.commentGenerate();
+//        System.out.println("test generate success");
+//    }
 
     @Test
     public void insertToTucaoTopicTest(){
@@ -45,12 +45,12 @@ public class ServiceTest1 extends BaseTest {
 
     @Test
     public void tuCaoCommentServiceTest(){
-        topicDetailService.selectCommentAndReplyByTopicChildrenId("chId0");
+        //topicAnswerService.selectCommentAndReplyByTopicChildrenId("chId0");
     }
 
-    @Test
-    public void tucaoCommentReplyServiceTest(){
-        serviceTest.generateCommentReply();
-    }
+//    @Test
+//    public void tucaoCommentReplyServiceTest(){
+//        serviceTest.generateCommentReply();
+//    }
 
 }

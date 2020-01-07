@@ -8,6 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class CommentReplyListVo extends BaseResp {
+public class CommentReplyListResp extends BaseResp {
     private List<CommentReplyListDto> commentReplyData = new ArrayList<>();
 }

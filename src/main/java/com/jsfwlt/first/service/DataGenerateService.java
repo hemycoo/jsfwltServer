@@ -1,10 +1,7 @@
 package com.jsfwlt.first.service;
 
 import com.jsfwlt.first.mapper.roast.*;
-import com.jsfwlt.first.po.roast.*;
-import com.jsfwlt.first.po.roast.CommentPo;
 import com.jsfwlt.first.po.roast.TucaoTopicPo;
-import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,11 +11,6 @@ import java.util.Date;
 @Component
 public class DataGenerateService {
 
-    @Autowired(required = false)
-    private ReplyPoMapper replyPoMapper;
-
-    @Autowired(required = false)
-    private CommentPoMapper commentPoMapper;
 
 
     @Autowired(required = false)
@@ -27,21 +19,21 @@ public class DataGenerateService {
     @Autowired(required = false)
     private UserInfoMapper userInfoMapper;
 
-    //生成评论详情数据
-    public void commentGenerate() {
-        for (int i = 0; i < 9; i++) {
-            CommentPo cp = new CommentPo();
-            cp.setCommentContent("CommentContent" + i);
-            cp.setCommentId(IdGenerator.idGenerate("cmid"));
-            cp.setTopicChildrenId("chId0");
-            cp.setCommentTime(new Date());
-            cp.setDislikeNumber(i);
-            cp.setLikeNumber(i + 1);
-            cp.setUserId("uId" + i);
-            cp.setUserNickname("name" + i);
-            commentPoMapper.insertSelective(cp);
-        }
-    }
+//    //生成评论详情数据
+//    public void commentGenerate() {
+//        for (int i = 0; i < 9; i++) {
+//            CommentPo cp = new CommentPo();
+//            cp.setCommentContent("CommentContent" + i);
+//            cp.setCommentId(IdGenerator.idGenerate("cmid"));
+//            cp.setTopicChildrenId("chId0");
+//            cp.setCommentTime(new Date());
+//            cp.setDislikeNumber(i);
+//            cp.setLikeNumber(i + 1);
+//            cp.setUserId("uId" + i);
+//            cp.setUserNickname("name" + i);
+//            commentPoMapper.insertSelective(cp);
+//        }
+//    }
 
 //    //生成话题详情数据
 //    public void generateData() {
@@ -62,23 +54,23 @@ public class DataGenerateService {
 //        System.out.println("generate success");
 //    }
 
-    //生成评论回复数据
-    public void generateCommentReply(){
-        for (int i = 0; i < 20; i++) {
-            ReplyPo replyPo = new ReplyPo();
-            replyPo.setCommentId(IdGenerator.idGenerate("cmid"));
-            replyPo.setDislikeNumber(i);
-            replyPo.setLikeNumber(i);
-            replyPo.setReplyContent(i + "reply" + i);
-            replyPo.setReplyId(IdGenerator.idGenerate("crid"));
-            replyPo.setReplyTime(new Date(System.currentTimeMillis()));
-            replyPo.setUserId(IdGenerator.idGenerate("urid"));
-            replyPo.setUserNickname("acr" + i);
-            replyPo.setReplyToId(IdGenerator.idGenerate("urid"));
-            replyPo.setReplyToName("name"+i);
-            replyPoMapper.insertSelective(replyPo);
-        }
-    }
+//    //生成评论回复数据
+//    public void generateCommentReply(){
+//        for (int i = 0; i < 20; i++) {
+//            ReplyPo replyPo = new ReplyPo();
+//            replyPo.setCommentId(IdGenerator.idGenerate("cmid"));
+//            replyPo.setDislikeNumber(i);
+//            replyPo.setLikeNumber(i);
+//            replyPo.setReplyContent(i + "reply" + i);
+//            replyPo.setReplyId(IdGenerator.idGenerate("crid"));
+//            replyPo.setReplyTime(new Date(System.currentTimeMillis()));
+//            replyPo.setUserId(IdGenerator.idGenerate("urid"));
+//            replyPo.setUserNickname("acr" + i);
+//            replyPo.setReplyToId(IdGenerator.idGenerate("urid"));
+//            replyPo.setReplyToName("name"+i);
+//            replyPoMapper.insertSelective(replyPo);
+//        }
+//    }
 
     //生成并插入tucao_topic表的测试数据
     public void insetToTucaoTopic() {

@@ -4,8 +4,8 @@ import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.TopicAnswerPoMapper;
 import com.jsfwlt.first.po.roast.TopicAnswerPo;
-import com.jsfwlt.first.service.roast.TopicDetailService;
-import com.jsfwlt.first.vo.roast.CommentReplyListVo;
+import com.jsfwlt.first.service.roast.TopicAnswerService;
+import com.jsfwlt.first.vo.roast.CommentReplyListResp;
 import com.jsfwlt.first.vo.roast.TopicDetailListResp;
 import com.jsfwlt.first.dto.roast.TopicDetailDto;
 import org.springframework.beans.BeanUtils;
@@ -24,11 +24,11 @@ public class TopicAnswerApi extends BaseApi {
     private TopicAnswerPoMapper topicAnswerPoMapper;
 
     @Autowired
-    private TopicDetailService topicDetailService;
+    private TopicAnswerService topicAnswerService;
 
     private int queryNum = 0; //测试使用
 
-    @RequestMapping("/tucao/topic/answer/query/{topicId}")
+    @GetMapping("/tucao/topic/answer/query/{topicId}")
     public TopicDetailListResp queryTopicDetail(@PathVariable("topicId") String req) throws Exception {
         System.out.println("req  : " + req);
         TopicDetailListResp topicDetailListResp = new TopicDetailListResp();
@@ -49,11 +49,11 @@ public class TopicAnswerApi extends BaseApi {
         return topicDetailListResp;
     }
 
-    @RequestMapping("/tucao/topic/detail/querycomment/{topicChildrenId}")
-    public CommentReplyListVo queryCommentReply(@PathVariable String topicChildrenId){
-        CommentReplyListVo commentReplyListVo = topicDetailService.selectCommentAndReplyByTopicChildrenId(topicChildrenId);
+    @GetMapping("/roast/topic/answer/querycomment/{topicAnswerId}")
+    public CommentReplyListResp queryCommentReply(@PathVariable String topicAnswerId){
+        CommentReplyListResp commentReplyListResp = topicAnswerService.selectCommentAndReplyByTopicAnswerId(topicAnswerId);
         System.out.println("comment success");
-        return commentReplyListVo;
+        return commentReplyListResp;
     }
 
 }
