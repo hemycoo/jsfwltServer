@@ -9,6 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class TopicDetailListResp extends BaseResp {
+public class TopicAnswerListResp extends BaseResp {
     List<TopicDetailDto> topicDetaildata = new ArrayList<>();
 }
