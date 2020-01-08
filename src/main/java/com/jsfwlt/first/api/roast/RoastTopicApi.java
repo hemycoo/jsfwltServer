@@ -37,7 +37,7 @@ public class RoastTopicApi extends BaseApi {
         return roastTopicVo;
     }
 
-    //查询吐槽信息列表
+    //分页查询吐槽话题
     @GetMapping("/roast/topic/queryAll")
     public RoastTopicListVo queryAllTucaoTopic(){
         RoastTopicListVo roastTopicListVo = new RoastTopicListVo();
@@ -55,5 +55,6 @@ public class RoastTopicApi extends BaseApi {
         System.out.println("查询所有吐槽表信息成功");
         return  roastTopicListVo;
     }
+
 
 }

@@ -53,7 +53,9 @@ public class UserInfoService {
         userInfoPo.setCreateTime(new Date());
         userInfoPo.setModifyTime(new Date());
         //用UUID生成盐
-        String salt = UUID.randomUUID().toString().substring(0,16).replaceAll("-","");
+
+        String salt = UUID.randomUUID().toString().substring(0,18).replaceAll("-","");
+
         String password = userInfoReq.getUserPassword();
         //生成密码的密文
         userInfoPo.setUserPassword(EncryptUtils.encryptMD5(password,salt));
@@ -112,7 +114,8 @@ public class UserInfoService {
 
     //生成默认的用户昵称
     private String createUserNickName(){
-        return "用户"+UUID.randomUUID().toString().replaceAll("-","");
+        return "用户"+UUID.randomUUID().toString().substring(0,8).replaceAll("-","");
+
     }
 
 }
