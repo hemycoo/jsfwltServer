@@ -185,4 +185,9 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where topic_id = #{topicId,jdbcType=INTEGER}
   </update>
+  <select id="selectAllRoastTopic" resultMap="BaseResultMap" parameterType="string">
+    select
+    <include refid="Base_Column_List" />
+    from roast_topic order by modify_time desc
+  </select>
 </mapper>

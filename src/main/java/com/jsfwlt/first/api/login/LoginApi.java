@@ -32,14 +32,8 @@ public class LoginApi {
     @GetMapping("/login")
     public LoginVo userLogin(@RequestParam("userNickname") String userName, @RequestParam("userPassword") String userPassword){
         LoginVo loginVo = new LoginVo();
-        try {
-            Map<String, String> map = userInfoService.login(userName, userPassword);
-            loginVo.setMap(map);
-        }catch (Exception e){
-            e.printStackTrace();
-            loginVo.setMessage("登录异常");
-            return loginVo;
-        }
+        Map<String, String> map = userInfoService.login(userName, userPassword);
+        loginVo.setMap(map);
         return loginVo;
     }
 

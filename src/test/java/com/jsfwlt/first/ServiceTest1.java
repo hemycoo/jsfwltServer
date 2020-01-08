@@ -28,8 +28,8 @@ public class ServiceTest1 extends BaseTest {
     }
 
     @Test
-    public void insertToTucaoTopicTest(){
-        serviceTest.insetToTucaoTopic();
+    public void insertToRoastTopicTest(){
+        serviceTest.insetToRoastTopic();
     }
 
     @Test

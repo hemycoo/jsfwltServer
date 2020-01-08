@@ -1,13 +1,13 @@
 package com.jsfwlt.first.api.roast;
 
 import com.jsfwlt.first.api.BaseApi;
-import com.jsfwlt.first.dto.roast.TucaoTopicDto;
+import com.jsfwlt.first.dto.roast.RoastTopicDto;
 import com.jsfwlt.first.exception.SelfException;
-import com.jsfwlt.first.mapper.roast.TucaoTopicPoMapper;
-import com.jsfwlt.first.po.roast.TucaoTopicPo;
+import com.jsfwlt.first.mapper.roast.RoastTopicPoMapper;
+import com.jsfwlt.first.po.roast.RoastTopicPo;
 import com.jsfwlt.first.utils.TimeUtils;
-import com.jsfwlt.first.vo.roast.TucaoTopicListVo;
-import com.jsfwlt.first.vo.roast.TucaoTopicVo;
+import com.jsfwlt.first.vo.roast.RoastTopicListVo;
+import com.jsfwlt.first.vo.roast.RoastTopicVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,39 +21,39 @@ import java.util.*;
 public class RoastTopicApi extends BaseApi {
 
     @Autowired(required = false)
-    private TucaoTopicPoMapper tucaoTopicPoMapper;
+    private RoastTopicPoMapper roastTopicPoMapper;
 
     //根据吐槽的ID查询
-    @GetMapping("/tucao/topic/query/{topicId}")
-    public TucaoTopicVo queryTucaoTopic(@PathVariable("topicId")String topicId){
-        TucaoTopicPo tucaoTopicPo = tucaoTopicPoMapper.selectByPrimaryKey(topicId);
-        if(tucaoTopicPo == null){
-            throw new SelfException("001","sorry query no data");
+    @GetMapping("/roast/topic/query/{topicId}")
+    public RoastTopicVo queryTucaoTopic(@PathVariable("topicId")int topicId){
+        RoastTopicPo roastTopicPo = roastTopicPoMapper.selectByPrimaryKey(topicId);
+        if(roastTopicPo == null){
+            throw new SelfException("001","编号"+topicId+"没找到");
         }
-        TucaoTopicVo tucaoTopicVo = new TucaoTopicVo();
-        TucaoTopicDto tucaoTopicDto = new TucaoTopicDto();
-        BeanUtils.copyProperties(tucaoTopicPo,tucaoTopicDto);
-        tucaoTopicVo.setData(tucaoTopicDto);
-        return tucaoTopicVo;
+        RoastTopicVo roastTopicVo = new RoastTopicVo();
+        RoastTopicDto roastTopicDto = new RoastTopicDto();
+        BeanUtils.copyProperties(roastTopicPo,roastTopicDto);
+        roastTopicVo.setData(roastTopicDto);
+        return roastTopicVo;
     }
 
     //查询吐槽信息列表
-    @GetMapping("/tucao/topic/queryAll")
-    public TucaoTopicListVo queryAllTucaoTopic(){
-        TucaoTopicListVo tucaoTopicListVo = new TucaoTopicListVo();
-        List<TucaoTopicPo> tucaoTopicPoList = tucaoTopicPoMapper.selectAllTucaoTopic();
-        List<TucaoTopicDto> tucaoTopicDtoList = new ArrayList<>();
-        for (TucaoTopicPo tucaoTopicPo : tucaoTopicPoList) {
-            Date date = tucaoTopicPo.getModifyTime();
+    @GetMapping("/roast/topic/queryAll")
+    public RoastTopicListVo queryAllTucaoTopic(){
+        RoastTopicListVo roastTopicListVo = new RoastTopicListVo();
+        List<RoastTopicPo> roastTopicPoList = roastTopicPoMapper.selectAllRoastTopic();
+        List<RoastTopicDto> roastTopicDtoList = new ArrayList<>();
+        for (RoastTopicPo roastTopicPo : roastTopicPoList) {
+            Date date = roastTopicPo.getModifyTime();
             String newDate = TimeUtils.date2String(date);
-            TucaoTopicDto tucaoTopicDto = new TucaoTopicDto();
-            BeanUtils.copyProperties(tucaoTopicPo,tucaoTopicDto);
-            tucaoTopicDto.setShowTime(newDate);
-            tucaoTopicDtoList.add(tucaoTopicDto);
+            RoastTopicDto roastTopicDto = new RoastTopicDto();
+            BeanUtils.copyProperties(roastTopicPo,roastTopicDto);
+            roastTopicDto.setShowTime(newDate);
+            roastTopicDtoList.add(roastTopicDto);
         }
-        tucaoTopicListVo.setData(tucaoTopicDtoList);
-        System.out.println("请求成功");
-        return  tucaoTopicListVo;
+        roastTopicListVo.setData(roastTopicDtoList);
+        System.out.println("查询所有吐槽表信息成功");
+        return  roastTopicListVo;
     }
 
 }

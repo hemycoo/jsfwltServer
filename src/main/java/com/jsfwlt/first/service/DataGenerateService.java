@@ -4,8 +4,6 @@ import com.jsfwlt.first.mapper.roast.*;
 import com.jsfwlt.first.mapper.user.UserInfoPoMapper;
 import com.jsfwlt.first.po.roast.*;
 import com.jsfwlt.first.po.roast.CommentPo;
-import com.jsfwlt.first.po.roast.TucaoTopicPo;
-import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,7 +21,10 @@ public class DataGenerateService {
 
 
     @Autowired(required = false)
-    private TucaoTopicPoMapper tucaoTopicPoMapper;
+    private RoastTopicPoMapper roastTopicPoMapper;
+
+    @Autowired(required = false)
+    private TopicContentPoMapper topicContentPoMapper;
 
     @Autowired(required = false)
     private UserInfoPoMapper userInfoPoMapper;
@@ -81,24 +82,34 @@ public class DataGenerateService {
         }
     }
 
-    //生成并插入tucao_topic表的测试数据
-    public void insetToTucaoTopic() {
-        TucaoTopicPo tucaoTopicPo = new TucaoTopicPo();
+    //生成并插入roast_topic表和topic_content表的测试数据
+    public void insetToRoastTopic() {
+        RoastTopicPo roastTopicPo = new RoastTopicPo();
+        TopicContentPo topicContentPo = new TopicContentPo();
         for (int i = 0; i < 15; i++) {
-            tucaoTopicPo.setTopicId(IdGenerator.idGenerate("tpid"));
-            tucaoTopicPo.setTitle("title" + i);
-            tucaoTopicPo.setContent("content" + i);
-            tucaoTopicPo.setCommentNumber(i);
-            tucaoTopicPo.setLikeNumber(i);
-            tucaoTopicPo.setDislikeNumber(i);
-            tucaoTopicPo.setImageUrl("https://localhost/image" + i);
-            tucaoTopicPo.setUserId("userId" + i);
-            tucaoTopicPoMapper.insert(tucaoTopicPo);
-            tucaoTopicPo.setImageUrl("https://localhost/image"+i);
-            tucaoTopicPo.setUserId("userId"+i);
-            tucaoTopicPoMapper.insert(tucaoTopicPo);
+            Date date = new Date();
+            //插入topic_content表
+            topicContentPo.setContent("content"+i);
+            topicContentPo.setLogicDelete(true);
+            topicContentPo.setCreateTime(date);
+            topicContentPo.setModifyTime(date);
+            topicContentPoMapper.insert(topicContentPo);
+            //插入roast_topic表
+            roastTopicPo.setTitle("title" + i);
+            roastTopicPo.setContentAbstract("contentAbstract"+i);
+            roastTopicPo.setContentId(i);
+            roastTopicPo.setCommentNumber(i);
+            roastTopicPo.setLikeNumber(i);
+            roastTopicPo.setDislikeNumber(i);
+            roastTopicPo.setImageUrl("https://localhost/image" + i);
+            roastTopicPo.setUserId(i);
+            roastTopicPo.setUserNickname("userNickname"+i);
+            roastTopicPo.setLogicDelete(true);
+            roastTopicPo.setCreateTime(date);
+            roastTopicPo.setModifyTime(date);
+            roastTopicPoMapper.insert(roastTopicPo);
         }
-        System.out.println("插入tucao_topic表成功");
+        System.out.println("插入tucao_topic表和topic_content成功");
     }
 
 //    //生成并插入user_info表的测试数据
