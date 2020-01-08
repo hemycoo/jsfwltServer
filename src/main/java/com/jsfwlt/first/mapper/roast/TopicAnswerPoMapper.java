@@ -17,5 +17,5 @@ public interface TopicAnswerPoMapper {
 
     int updateByPrimaryKey(TopicAnswerPo record);
 
-    List<TopicAnswerPo> selectByTopicId(String topicId);
+    List<TopicAnswerPo> selectByTopicId(Integer topicId);
 }

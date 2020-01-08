@@ -2,26 +2,32 @@ package com.jsfwlt.first.dto.roast;
 
 import lombok.Data;
 
+import java.util.Date;
+
 
 @Data
 public class ReplyDto {
-    private String replyId;
+    private Integer replyId;
 
     private String replyContent;
 
     private String replyToName;
 
-    private String replyToId;
+    private Integer replyToId;
 
-    private String commentId;
+    private Integer commentId;
 
-    private String replyTime;
-
-    private String userId;
+    private Integer userId;
 
     private String userNickname;
 
     private Integer likeNumber;
 
     private Integer dislikeNumber;
+
+    private Boolean logicDelete;
+
+    private String createTime;
+
+    private String modifyTime;
 }

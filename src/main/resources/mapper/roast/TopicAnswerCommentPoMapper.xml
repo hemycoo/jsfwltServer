@@ -150,4 +150,11 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectCommentByTopicAnswerId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from topic_answer_comment
+    where topic_answer_id = #{topicAnswerId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.jsfwlt.first.mapper.roast;
 
 import com.jsfwlt.first.po.roast.CommentReplyPo;
 
+import java.util.List;
+
 public interface CommentReplyPoMapper {
     int deleteByPrimaryKey(Integer replyId);
 
@@ -14,4 +16,6 @@ public interface CommentReplyPoMapper {
     int updateByPrimaryKeySelective(CommentReplyPo record);
 
     int updateByPrimaryKey(CommentReplyPo record);
+
+    List<CommentReplyPo> selectByCommentId(Integer commentId);
 }
