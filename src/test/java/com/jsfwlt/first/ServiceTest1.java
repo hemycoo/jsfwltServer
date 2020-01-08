@@ -15,10 +15,21 @@ public class ServiceTest1 extends BaseTest {
     private TopicAnswerService topicAnswerService;
 
     @Test
-    public void topicDetailGenerate(){
-        //serviceTest.dataGenerate();
-        //serviceTest.generateData();
-        System.out.println("test generate success");
+    public void topicAnswerDataGenerate(){
+        serviceTest.topicAnswerDatagenerate();
+        System.out.println("answer data generate success");
+    }
+
+    @Test
+    public void topicAnswerCommentDataGenerate(){
+        serviceTest.topicAnswerCommentDatagenerate();
+        System.out.println("answer comment data generate success");
+    }
+
+    @Test
+    public void topicAnswerCommentReplyDataGenerate(){
+        serviceTest.commentReplyDataGenerate();
+        System.out.println("answer comment reply data generate success");
     }
 
 //    @Test

@@ -26,7 +26,7 @@ public class TopicAnswerService {
     @Autowired
     private CommentReplyPoMapper commentReplyPoMapper;
 
-    public CommentReplyListResp selectCommentAndReplyByTopicAnswerId(String topicAnswerId) {
+    public CommentReplyListResp selectCommentAndReplyByTopicAnswerId(Integer topicAnswerId) {
         List<TopicAnswerCommentPo> commentPoList = topicAnswerCommentPoMapper.selectCommentByTopicAnswerId(topicAnswerId);
         CommentReplyListResp commentReplyListResp = new CommentReplyListResp();
         for (TopicAnswerCommentPo topicAnswerCommentPo : commentPoList) {

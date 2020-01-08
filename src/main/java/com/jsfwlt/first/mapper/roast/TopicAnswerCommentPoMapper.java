@@ -5,6 +5,7 @@ import com.jsfwlt.first.po.roast.TopicAnswerCommentPo;
 import java.util.List;
 
 public interface TopicAnswerCommentPoMapper {
+
     int deleteByPrimaryKey(Integer commentId);
 
     int insert(TopicAnswerCommentPo record);
@@ -17,5 +18,5 @@ public interface TopicAnswerCommentPoMapper {
 
     int updateByPrimaryKey(TopicAnswerCommentPo record);
 
-    List<TopicAnswerCommentPo> selectCommentByTopicAnswerId(String topicAnswerId);
+    List<TopicAnswerCommentPo> selectCommentByTopicAnswerId(Integer topicAnswerId);
 }

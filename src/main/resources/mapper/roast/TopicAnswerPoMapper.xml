@@ -151,8 +151,9 @@
     where topic_answer_id = #{topicAnswerId,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByTopicId" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select * from topic_detail
-    where topic_id = #{topicId,jdbcType=VARCHAR}
+  <select id="selectByTopicId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select * from topic_answer
+    where topic_id = #{topicId,jdbcType=INTEGER}
   </select>
+
 </mapper>

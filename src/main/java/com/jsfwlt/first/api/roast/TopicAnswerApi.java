@@ -28,8 +28,8 @@ public class TopicAnswerApi extends BaseApi {
 
     private int queryNum = 0; //测试使用
 
-    @GetMapping("/tucao/topic/answer/query/{topicId}")
-    public TopicDetailListResp queryTopicDetail(@PathVariable("topicId") String req) throws Exception {
+    @GetMapping("/roast/topic/answer/query/{topicId}")
+    public TopicDetailListResp queryTopicAnswer(@PathVariable("topicId") int req) throws Exception {
         System.out.println("req  : " + req);
         TopicDetailListResp topicDetailListResp = new TopicDetailListResp();
         List<TopicAnswerPo> topicAnswerList = topicAnswerPoMapper.selectByTopicId(req);
@@ -50,7 +50,7 @@ public class TopicAnswerApi extends BaseApi {
     }
 
     @GetMapping("/roast/topic/answer/querycomment/{topicAnswerId}")
-    public CommentReplyListResp queryCommentReply(@PathVariable String topicAnswerId){
+    public CommentReplyListResp queryCommentReply(@PathVariable Integer topicAnswerId){
         CommentReplyListResp commentReplyListResp = topicAnswerService.selectCommentAndReplyByTopicAnswerId(topicAnswerId);
         System.out.println("comment success");
         return commentReplyListResp;
