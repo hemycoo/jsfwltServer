@@ -34,7 +34,6 @@ public class LoginApi {
         LoginVo loginVo = new LoginVo();
         Map<String, String> map = userInfoService.login(userName, userPassword);
         loginVo.setMap(map);
-        System.out.println("登录成功");
         return loginVo;
     }
 

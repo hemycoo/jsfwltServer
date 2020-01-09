@@ -1,9 +1,11 @@
 package com.jsfwlt.first.mapper.roast;
 
 import com.jsfwlt.first.po.roast.RoastTopicPo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface RoastTopicPoMapper {
     int deleteByPrimaryKey(Integer topicId);
 

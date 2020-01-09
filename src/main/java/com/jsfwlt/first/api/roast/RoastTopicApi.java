@@ -1,10 +1,12 @@
 package com.jsfwlt.first.api.roast;
 
+import com.github.pagehelper.PageHelper;
 import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.dto.roast.RoastTopicDto;
 import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.RoastTopicPoMapper;
 import com.jsfwlt.first.po.roast.RoastTopicPo;
+import com.jsfwlt.first.service.roast.RoastTopicService;
 import com.jsfwlt.first.utils.TimeUtils;
 import com.jsfwlt.first.vo.roast.RoastTopicListVo;
 import com.jsfwlt.first.vo.roast.RoastTopicVo;
@@ -12,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
@@ -20,8 +23,11 @@ import java.util.*;
 @RestController
 public class RoastTopicApi extends BaseApi {
 
-    @Autowired(required = false)
+    @Autowired
     private RoastTopicPoMapper roastTopicPoMapper;
+
+    @Autowired
+    private RoastTopicService roastTopicService;
 
     //根据吐槽的ID查询
     @GetMapping("/roast/topic/query/{topicId}")
@@ -39,9 +45,11 @@ public class RoastTopicApi extends BaseApi {
 
     //分页查询吐槽话题
     @GetMapping("/roast/topic/queryAll")
-    public RoastTopicListVo queryAllTucaoTopic(){
+    public RoastTopicListVo queryAllTucaoTopic(@RequestParam(defaultValue = "1") int p,
+                                               @RequestParam(defaultValue = "8") int size){
         RoastTopicListVo roastTopicListVo = new RoastTopicListVo();
-        List<RoastTopicPo> roastTopicPoList = roastTopicPoMapper.selectAllRoastTopic();
+        PageHelper.startPage(p,size);
+        List<RoastTopicPo> roastTopicPoList = roastTopicService.pageRoastTopic();
         List<RoastTopicDto> roastTopicDtoList = new ArrayList<>();
         for (RoastTopicPo roastTopicPo : roastTopicPoList) {
             Date date = roastTopicPo.getModifyTime();
@@ -55,6 +63,5 @@ public class RoastTopicApi extends BaseApi {
         System.out.println("查询所有吐槽表信息成功");
         return  roastTopicListVo;
     }
-
 
 }
