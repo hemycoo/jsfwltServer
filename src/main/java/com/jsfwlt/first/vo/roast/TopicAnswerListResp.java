@@ -1,7 +1,7 @@
 package com.jsfwlt.first.vo.roast;
 
 
-import com.jsfwlt.first.dto.roast.TopicDetailDto;
+import com.jsfwlt.first.dto.roast.TopicAnswerDto;
 import com.jsfwlt.first.vo.BaseResp;
 import lombok.Data;
 
@@ -10,5 +10,5 @@ import java.util.List;
 
 @Data
 public class TopicAnswerListResp extends BaseResp {
-    List<TopicDetailDto> topicDetaildata = new ArrayList<>();
+    List<TopicAnswerDto> topicAnswerData = new ArrayList<>();
 }
