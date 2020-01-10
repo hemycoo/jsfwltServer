@@ -19,11 +19,6 @@ public class ServiceTest1 extends BaseTest {
         System.out.println("test generate success");
     }
 
-    @Test
-    public void commentGenerate(){
-        serviceTest.commentGenerate();
-        System.out.println("test generate success");
-    }
 
     @Test
     public void insertToRoastTopicTest(){
@@ -39,12 +34,6 @@ public class ServiceTest1 extends BaseTest {
     public void idGenTest(){
         String str = IdGenerator.idGenerate("tpid");
         System.out.println(str);
-    }
-
-
-    @Test
-    public void tucaoCommentReplyServiceTest(){
-        serviceTest.generateCommentReply();
     }
 
 }
