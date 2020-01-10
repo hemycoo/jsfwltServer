@@ -5,7 +5,9 @@ import com.jsfwlt.first.api.BaseApi;
 import com.jsfwlt.first.dto.roast.RoastTopicDto;
 import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.RoastTopicPoMapper;
+import com.jsfwlt.first.mapper.roast.TopicContentPoMapper;
 import com.jsfwlt.first.po.roast.RoastTopicPo;
+import com.jsfwlt.first.po.roast.TopicContentPo;
 import com.jsfwlt.first.service.roast.RoastTopicService;
 import com.jsfwlt.first.utils.TimeUtils;
 import com.jsfwlt.first.vo.roast.RoastTopicListVo;
@@ -28,6 +30,9 @@ public class RoastTopicApi extends BaseApi {
 
     @Autowired
     private RoastTopicService roastTopicService;
+
+    @Autowired
+    private TopicContentPoMapper topicContentPoMapper;
 
     //根据吐槽的ID查询
     @GetMapping("/roast/topic/query/{topicId}")
@@ -62,6 +67,13 @@ public class RoastTopicApi extends BaseApi {
         roastTopicListVo.setData(roastTopicDtoList);
         System.out.println("查询所有吐槽表信息成功");
         return  roastTopicListVo;
+    }
+
+    //根据topicId查询roast表中content_abstract对应的content
+    @GetMapping("/roast/topic/queryContent/{contentId}")
+    public TopicContentPo queryContent(@PathVariable("contentId")int contentId){
+        TopicContentPo topicContentPo = topicContentPoMapper.selectByPrimaryKey(contentId);
+        return topicContentPo;
     }
 
 }

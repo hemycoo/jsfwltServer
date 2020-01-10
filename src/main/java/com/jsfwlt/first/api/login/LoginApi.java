@@ -33,6 +33,9 @@ public class LoginApi {
     public LoginVo userLogin(@RequestParam("userNickname") String userName, @RequestParam("userPassword") String userPassword){
         LoginVo loginVo = new LoginVo();
         Map<String, String> map = userInfoService.login(userName, userPassword);
+        if(!map.containsKey("token")){
+            loginVo.setStatus("201");
+        }
         loginVo.setMap(map);
         return loginVo;
     }

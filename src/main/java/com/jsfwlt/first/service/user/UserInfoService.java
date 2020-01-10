@@ -19,10 +19,10 @@ import java.util.UUID;
 // TODO: 2020/1/7 去掉required =false
 @Service
 public class UserInfoService {
-    @Autowired(required = false)
+    @Autowired
     UserInfoPoMapper userInfoPoMapper;
 
-    @Autowired(required = false)
+    @Autowired
     LoginTokenPoMapper loginTokenPoMapper;
 
     //注册业务实现
