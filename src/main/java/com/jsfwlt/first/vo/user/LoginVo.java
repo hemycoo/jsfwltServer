@@ -8,6 +8,6 @@ import java.util.Map;
 
 @Data
 public class LoginVo extends BaseResp {
-    String userNickname;
+    //String userNickname;
     Map<String,String> map = new HashMap<>();
 }

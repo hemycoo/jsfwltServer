@@ -19,10 +19,10 @@ import java.util.UUID;
 // TODO: 2020/1/7 去掉required =false
 @Service
 public class UserInfoService {
-    @Autowired(required = false)
+    @Autowired
     UserInfoPoMapper userInfoPoMapper;
 
-    @Autowired(required = false)
+    @Autowired
     LoginTokenPoMapper loginTokenPoMapper;
 
     //注册业务实现
@@ -53,7 +53,6 @@ public class UserInfoService {
         userInfoPo.setCreateTime(new Date());
         userInfoPo.setModifyTime(new Date());
         //用UUID生成盐
-
         String salt = UUID.randomUUID().toString().substring(0,18).replaceAll("-","");
 
         String password = userInfoReq.getUserPassword();
@@ -115,7 +114,6 @@ public class UserInfoService {
     //生成默认的用户昵称
     private String createUserNickName(){
         return "用户"+UUID.randomUUID().toString().substring(0,8).replaceAll("-","");
-
     }
 
 }
