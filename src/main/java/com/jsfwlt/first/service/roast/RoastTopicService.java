@@ -11,7 +11,7 @@ import java.util.List;
 public class RoastTopicService {
     @Autowired
     RoastTopicPoMapper roastTopicPoMapper;
-    public List<RoastTopicPo> pageRoastTopic(){
+    public List<RoastTopicPo> pageQueryRoastTopic(){
         return roastTopicPoMapper.selectAllRoastTopic();
     }
 }

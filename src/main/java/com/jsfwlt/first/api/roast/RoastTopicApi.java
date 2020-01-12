@@ -49,12 +49,12 @@ public class RoastTopicApi extends BaseApi {
     }
 
     //分页查询吐槽话题
-    @GetMapping("/roast/topic/queryAll")
-    public RoastTopicListVo queryAllTucaoTopic(@RequestParam(defaultValue = "1") int p,
+    @GetMapping("/roast/topic/pageQuery")
+    public RoastTopicListVo pageQuery(@RequestParam(defaultValue = "1") int p,
                                                @RequestParam(defaultValue = "8") int size){
         RoastTopicListVo roastTopicListVo = new RoastTopicListVo();
         PageHelper.startPage(p,size);
-        List<RoastTopicPo> roastTopicPoList = roastTopicService.pageRoastTopic();
+        List<RoastTopicPo> roastTopicPoList = roastTopicService.pageQueryRoastTopic();
         List<RoastTopicDto> roastTopicDtoList = new ArrayList<>();
         for (RoastTopicPo roastTopicPo : roastTopicPoList) {
             Date date = roastTopicPo.getModifyTime();

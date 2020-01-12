@@ -1,7 +1,9 @@
 package com.jsfwlt.first.mapper.roast;
 
 import com.jsfwlt.first.po.roast.TopicContentPo;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface TopicContentPoMapper {
     int deleteByPrimaryKey(Integer contentId);
 
