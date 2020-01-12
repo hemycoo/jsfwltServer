@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:8080")
                 .allowedMethods("*")
-                .allowedHeaders("Access-Control-Allow-Origin")
+                .allowedHeaders("*")
                 .allowCredentials(true);
     }
 
