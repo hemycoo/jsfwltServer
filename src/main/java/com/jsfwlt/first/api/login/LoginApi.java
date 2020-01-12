@@ -21,16 +21,19 @@ public class LoginApi {
     @Autowired
     UserInfoService userInfoService;
 
-    @GetMapping("/register")
+    @PostMapping("/register")
     public UserInfoResp userRegister(UserInfoReq userInfoReq){
         Map<String,String> map = userInfoService.register(userInfoReq);
         UserInfoResp userInfoResp = new UserInfoResp();
+        if(!map.containsKey("token")){
+            userInfoResp.setStatus("201");
+        }
         userInfoResp.setMap(map);
         return userInfoResp;
     }
 
     @GetMapping("/login")
-    public LoginVo userLogin(@RequestParam("userNickname") String userName, @RequestParam("userPassword") String userPassword){
+    public LoginVo userLogin(@RequestParam("userName") String userName, @RequestParam("userPassword") String userPassword){
         LoginVo loginVo = new LoginVo();
         Map<String, String> map = userInfoService.login(userName, userPassword);
         if(!map.containsKey("token")){

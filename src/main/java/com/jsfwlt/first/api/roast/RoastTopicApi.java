@@ -65,7 +65,6 @@ public class RoastTopicApi extends BaseApi {
             roastTopicDtoList.add(roastTopicDto);
         }
         roastTopicListVo.setData(roastTopicDtoList);
-        System.out.println("查询所有吐槽表信息成功");
         return  roastTopicListVo;
     }
 
