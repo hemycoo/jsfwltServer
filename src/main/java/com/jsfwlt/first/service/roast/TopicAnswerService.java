@@ -2,6 +2,7 @@ package com.jsfwlt.first.service.roast;
 
 import com.jsfwlt.first.dto.roast.CommentReplyListDto;
 import com.jsfwlt.first.dto.roast.ReplyDto;
+import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.CommentReplyPoMapper;
 import com.jsfwlt.first.mapper.roast.TopicAnswerCommentPoMapper;
 import com.jsfwlt.first.mapper.roast.TopicAnswerPoMapper;
@@ -10,6 +11,7 @@ import com.jsfwlt.first.po.roast.TopicAnswerCommentPo;
 import com.jsfwlt.first.po.roast.TopicAnswerPo;
 import com.jsfwlt.first.utils.TimeUtils;
 import com.jsfwlt.first.vo.roast.AnswerInsertReq;
+import com.jsfwlt.first.vo.roast.CommentInsertReq;
 import com.jsfwlt.first.vo.roast.CommentReplyListResp;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,6 @@ import java.util.List;
 
 @Service
 public class TopicAnswerService {
-
 
 
     @Autowired
@@ -39,7 +40,7 @@ public class TopicAnswerService {
         for (TopicAnswerCommentPo topicAnswerCommentPo : commentPoList) {
 
             CommentReplyListDto commentReplyListDto = new CommentReplyListDto();
-            BeanUtils.copyProperties(topicAnswerCommentPo,commentReplyListDto);
+            BeanUtils.copyProperties(topicAnswerCommentPo, commentReplyListDto);
             commentReplyListDto.setCreateTime(TimeUtils.date2String(topicAnswerCommentPo.getCreateTime()));
             commentReplyListDto.setModifyTime(TimeUtils.date2String(topicAnswerCommentPo.getModifyTime()));
 
@@ -49,7 +50,7 @@ public class TopicAnswerService {
             List<ReplyDto> replyDtos = new ArrayList<>();
             for (CommentReplyPo replyPo : replyPoList) {
                 ReplyDto replyDto = new ReplyDto();
-                BeanUtils.copyProperties(replyPo,replyDto);
+                BeanUtils.copyProperties(replyPo, replyDto);
                 replyDto.setCreateTime(TimeUtils.date2String(replyPo.getCreateTime()));
                 replyDto.setModifyTime(TimeUtils.date2String(replyPo.getModifyTime()));
                 replyDtos.add(replyDto);
@@ -61,8 +62,10 @@ public class TopicAnswerService {
         return commentReplyListResp;
     }
 
-    /**todo 由于用户名及昵称未传递，暂时未做保存，随机生成*/
-    public void insertAnswer(AnswerInsertReq answerData){
+    /**
+     * todo 由于用户名及昵称未传递，暂时未做保存，随机生成
+     */
+    public void insertAnswer(AnswerInsertReq answerData) {
         TopicAnswerPo topicAnswerPo = new TopicAnswerPo();
         Date date = new Date();
         topicAnswerPo.setTopicId(answerData.getTopicId());
@@ -75,6 +78,33 @@ public class TopicAnswerService {
         topicAnswerPo.setUserId(1);
         topicAnswerPo.setUserNickname("insetAnswer");
 
-        topicAnswerPoMapper.insertSelective(topicAnswerPo);
+        try {
+            topicAnswerPoMapper.insertSelective(topicAnswerPo);
+        } catch (Exception e) {
+            throw new SelfException("000", "插入回答到数据库失败了，话题的id 为" + answerData.getTopicId());
+        }
+    }
+
+    /**
+     * todo 由于用户名及昵称未传递，暂时未做保存，随机生成
+     */
+    public void insertComment(CommentInsertReq commentData) {
+        TopicAnswerCommentPo commentPo = new TopicAnswerCommentPo();
+        Date date = new Date();
+        commentPo.setCommentContent(commentData.getCommentContent());
+        commentPo.setTopicAnswerId(commentData.getTopicAnswerId());
+        commentPo.setUserId(2);
+        commentPo.setUserNickname("comment");
+        commentPo.setLikeNumber(0);
+        commentPo.setDislikeNumber(0);
+        commentPo.setLogicDelete(true);
+        commentPo.setCreateTime(date);
+        commentPo.setModifyTime(date);
+
+        try {
+            topicAnswerCommentPoMapper.insertSelective(commentPo);
+        } catch (Exception e) {
+            throw new SelfException("000", "插入评论到评论表失败了，answer的id为 " + commentData.getTopicAnswerId());
+        }
     }
 }

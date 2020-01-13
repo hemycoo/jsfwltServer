@@ -7,6 +7,7 @@ import com.jsfwlt.first.po.roast.TopicAnswerPo;
 import com.jsfwlt.first.service.roast.TopicAnswerService;
 import com.jsfwlt.first.vo.BaseResp;
 import com.jsfwlt.first.vo.roast.AnswerInsertReq;
+import com.jsfwlt.first.vo.roast.CommentInsertReq;
 import com.jsfwlt.first.vo.roast.CommentReplyListResp;
 import com.jsfwlt.first.vo.roast.TopicAnswerListResp;
 import com.jsfwlt.first.dto.roast.TopicAnswerDto;
@@ -58,14 +59,22 @@ public class TopicAnswerApi extends BaseApi {
         return commentReplyListResp;
     }
 
-    @PostMapping("/roast/topic/answer/insertcomment")
+    @PostMapping("/roast/topic/answer/insertanswer")
     public BaseResp insertAnswer(@RequestBody AnswerInsertReq req){
 
         if (req.getContent().isEmpty() || req.getContent().equals("")){
-            throw new SelfException("000", "您的回答内容为空哟");
+            throw new SelfException("000", "您的回答内容为空哟，话题的id为 ：" + req.getTopicId());
         }
         topicAnswerService.insertAnswer(req);
-        System.out.println("被访问了哟" + req.getTopicId()+ "content" +req.getContent());
+        return new BaseResp();
+    }
+
+    @PostMapping("/roast/topic/answer/insertcomment")
+    public BaseResp insertComment(@RequestBody CommentInsertReq req){
+        if (req.getCommentContent().equals("")){
+            throw new SelfException("000", "您输入的内容为空，回答的id为" + req.getTopicAnswerId());
+        }
+        topicAnswerService.insertComment(req);
         return new BaseResp();
     }
     
