@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
 
-
+/**
+ * @author 十方飞鱼
+ * @date 2020/1/13 15:51
+ */
 @RestController
 public class RoastTopicApi extends BaseApi {
 
@@ -34,7 +37,7 @@ public class RoastTopicApi extends BaseApi {
     @Autowired
     private TopicContentPoMapper topicContentPoMapper;
 
-    //根据吐槽的ID查询
+    /**根据吐槽的ID查询*/
     @GetMapping("/roast/topic/query/{topicId}")
     public RoastTopicVo queryTucaoTopic(@PathVariable("topicId")int topicId){
         RoastTopicPo roastTopicPo = roastTopicPoMapper.selectByPrimaryKey(topicId);
@@ -48,7 +51,7 @@ public class RoastTopicApi extends BaseApi {
         return roastTopicVo;
     }
 
-    //分页查询吐槽话题
+    /**分页查询吐槽话题*/
     @GetMapping("/roast/topic/pageQuery")
     public RoastTopicListVo pageQuery(@RequestParam(defaultValue = "1") int p,
                                                @RequestParam(defaultValue = "8") int size){
@@ -68,7 +71,7 @@ public class RoastTopicApi extends BaseApi {
         return  roastTopicListVo;
     }
 
-    //根据topicId查询roast表中content_abstract对应的content
+    /**根据topicId查询roast表中content_abstract对应的content*/
     @GetMapping("/roast/topic/queryContent/{contentId}")
     public TopicContentPo queryContent(@PathVariable("contentId")int contentId){
         TopicContentPo topicContentPo = topicContentPoMapper.selectByPrimaryKey(contentId);
