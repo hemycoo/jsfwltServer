@@ -6,6 +6,7 @@ import com.jsfwlt.first.dto.roast.RoastTopicDto;
 import com.jsfwlt.first.exception.SelfException;
 import com.jsfwlt.first.mapper.roast.RoastTopicPoMapper;
 import com.jsfwlt.first.mapper.roast.TopicContentPoMapper;
+import com.jsfwlt.first.po.roast.HostHolder;
 import com.jsfwlt.first.po.roast.RoastTopicPo;
 import com.jsfwlt.first.po.roast.TopicContentPo;
 import com.jsfwlt.first.service.roast.RoastTopicService;
@@ -14,10 +15,7 @@ import com.jsfwlt.first.vo.roast.RoastTopicListVo;
 import com.jsfwlt.first.vo.roast.RoastTopicVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -27,6 +25,9 @@ import java.util.*;
  */
 @RestController
 public class RoastTopicApi extends BaseApi {
+
+    @Autowired
+    private HostHolder hostHolder;
 
     @Autowired
     private RoastTopicPoMapper roastTopicPoMapper;
@@ -68,6 +69,9 @@ public class RoastTopicApi extends BaseApi {
             roastTopicDtoList.add(roastTopicDto);
         }
         roastTopicListVo.setData(roastTopicDtoList);
+        if(hostHolder.getUserInfoPo() != null) {
+            System.out.println(hostHolder.getUserInfoPo().getUserNickname());
+        }
         return  roastTopicListVo;
     }
 
@@ -77,5 +81,6 @@ public class RoastTopicApi extends BaseApi {
         TopicContentPo topicContentPo = topicContentPoMapper.selectByPrimaryKey(contentId);
         return topicContentPo;
     }
+
 
 }
