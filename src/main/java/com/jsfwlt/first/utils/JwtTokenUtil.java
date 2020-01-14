@@ -82,9 +82,13 @@ public class JwtTokenUtil {
      */
     public static Claims parseJWT(String jwt) {
         SecretKey secretKey = generalKey();
-        return Jwts.parser()
-                .setSigningKey(secretKey)
-                .parseClaimsJws(jwt)
-                .getBody();
+        Claims claims = null;
+        try {
+             claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt).getBody();
+        }catch (ExpiredJwtException e){
+            System.out.println("token超期");
+            claims = e.getClaims();
+        }
+        return claims;
     }
 }

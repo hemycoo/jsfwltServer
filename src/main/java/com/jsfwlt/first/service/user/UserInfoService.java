@@ -104,7 +104,7 @@ public class UserInfoService {
         }
         map.put("userNickname",userInfoPo.getUserNickname());
         String userId = userInfoPo.getUserId().toString();
-        String JWT = JwtTokenUtil.createJWT(userId, userName, 5000);
+        String JWT = JwtTokenUtil.createJWT(userId, userName, 604800000);
         map.put("token",JWT);
         return map;
     }
