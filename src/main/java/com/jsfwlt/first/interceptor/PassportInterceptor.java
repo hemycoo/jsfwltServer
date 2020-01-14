@@ -1,7 +1,12 @@
 package com.jsfwlt.first.interceptor;
 
+import com.jsfwlt.first.dto.jwt.CheckResult;
 import com.jsfwlt.first.mapper.roast.LoginTokenPoMapper;
+import com.jsfwlt.first.mapper.user.UserInfoPoMapper;
 import com.jsfwlt.first.po.roast.HostHolder;
+import com.jsfwlt.first.po.user.UserInfoPo;
+import com.jsfwlt.first.utils.JwtTokenUtil;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,6 +22,8 @@ public class PassportInterceptor implements HandlerInterceptor {
     @Autowired(required = false)
     LoginTokenPoMapper loginTokenPoMapper;
 
+    @Autowired
+    UserInfoPoMapper userInfoPoMapper;
 
     @Autowired
     private HostHolder hostHolder;
@@ -33,14 +40,19 @@ public class PassportInterceptor implements HandlerInterceptor {
                 }
             }
         }
-//        if(token != null){
-//            LoginTokenPo loginTokenPo = loginTokenPoMapper.selectByToken(token);
-//            if(loginTokenPo == null || loginTokenPo.getExpired().before(new Date()) || loginTokenPo.getStatus() != 0){
-//                return true;
-//            }
-//            UserInfoPo userInfoPo = userInfoMapper.selectByPrimaryKey(loginTokenPo.getUserId());
-//            hostHolder.setUserInfoPo(userInfoPo);
-//        }
+        if(token != null){
+            CheckResult checkResult = JwtTokenUtil.validateJWT(token);
+            Boolean flag = checkResult.getSuccess();
+            if(flag = false) {
+                System.out.println("用户验证失败");
+                return true;
+            }
+            Claims claims = JwtTokenUtil.parseJWT(token);
+            String userId = claims.getId();
+            UserInfoPo userInfoPo = userInfoPoMapper.selectByPrimaryKey(Integer.parseInt(userId));
+            hostHolder.setUserInfoPo(userInfoPo);
+            System.out.println(userInfoPo.getUserNickname());
+        }
         return true;
     }
 
