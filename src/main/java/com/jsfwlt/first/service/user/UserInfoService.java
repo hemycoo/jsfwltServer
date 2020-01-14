@@ -5,6 +5,7 @@ import com.jsfwlt.first.mapper.user.UserInfoPoMapper;
 import com.jsfwlt.first.po.user.LoginTokenPo;
 import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.EncryptUtils;
+import com.jsfwlt.first.utils.JwtTokenUtil;
 import com.jsfwlt.first.vo.user.UserInfoReq;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,8 +103,9 @@ public class UserInfoService {
             return map;
         }
         map.put("userNickname",userInfoPo.getUserNickname());
-        String token = addLoginToken(userInfoPo.getUserId());
-        map.put("token",token);
+        String userId = userInfoPo.getUserId().toString();
+        String JWT = JwtTokenUtil.createJWT(userId, userName, 604800);
+        map.put("token",JWT);
         return map;
     }
     /**生成token*/
