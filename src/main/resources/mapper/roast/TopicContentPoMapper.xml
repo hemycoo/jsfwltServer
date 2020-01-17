@@ -21,7 +21,7 @@
     delete from topic_content
     where content_id = #{contentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jsfwlt.first.po.roast.TopicContentPo" >
+  <insert id="insert" parameterType="com.jsfwlt.first.po.roast.TopicContentPo" useGeneratedKeys="true" keyProperty="contentId" keyColumn="conten_id">
     insert into topic_content (content_id, content, logic_delete, 
       create_time, modify_time)
     values (#{contentId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{logicDelete,jdbcType=BIT}, 

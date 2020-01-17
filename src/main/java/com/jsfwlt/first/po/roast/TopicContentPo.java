@@ -1,7 +1,14 @@
 package com.jsfwlt.first.po.roast;
 
+import lombok.Data;
+
 import java.util.Date;
 
+/**
+ * @author 十方飞鱼
+ * @date 2020/1/17 16:09
+ */
+@Data
 public class TopicContentPo {
     private Integer contentId;
 

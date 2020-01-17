@@ -11,6 +11,7 @@ import com.jsfwlt.first.vo.roast.CommentInsertReq;
 import com.jsfwlt.first.vo.roast.CommentReplyListResp;
 import com.jsfwlt.first.vo.roast.TopicAnswerListResp;
 import com.jsfwlt.first.dto.roast.TopicAnswerDto;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -61,8 +62,7 @@ public class TopicAnswerApi extends BaseApi {
 
     @PostMapping("/roast/topic/answer/insertanswer")
     public BaseResp insertAnswer(@RequestBody AnswerInsertReq req){
-
-        if (req.getContent().isEmpty() || req.getContent().equals("")){
+        if (StringUtils.isBlank(req.getContent())){
             throw new SelfException("000", "您的回答内容为空哟，话题的id为 ：" + req.getTopicId());
         }
         topicAnswerService.insertAnswer(req);
@@ -71,7 +71,7 @@ public class TopicAnswerApi extends BaseApi {
 
     @PostMapping("/roast/topic/answer/insertcomment")
     public BaseResp insertComment(@RequestBody CommentInsertReq req){
-        if (req.getCommentContent().equals("")){
+        if (StringUtils.isBlank(req.getCommentContent())){
             throw new SelfException("000", "您输入的内容为空，回答的id为" + req.getTopicAnswerId());
         }
         topicAnswerService.insertComment(req);

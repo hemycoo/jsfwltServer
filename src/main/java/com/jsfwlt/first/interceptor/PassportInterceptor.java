@@ -16,6 +16,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author 十方飞鱼
+ * @date 2020/1/17 10:52
+ */
 @Component
 public class PassportInterceptor implements HandlerInterceptor {
 

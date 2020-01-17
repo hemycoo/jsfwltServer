@@ -11,8 +11,11 @@ import com.jsfwlt.first.po.roast.RoastTopicPo;
 import com.jsfwlt.first.po.roast.TopicContentPo;
 import com.jsfwlt.first.service.roast.RoastTopicService;
 import com.jsfwlt.first.utils.TimeUtils;
+import com.jsfwlt.first.vo.BaseResp;
+import com.jsfwlt.first.vo.roast.RoastTopicInsertReq;
 import com.jsfwlt.first.vo.roast.RoastTopicListVo;
 import com.jsfwlt.first.vo.roast.RoastTopicVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -75,11 +78,22 @@ public class RoastTopicApi extends BaseApi {
         return  roastTopicListVo;
     }
 
+    // TODO: 2020/1/17 不能返回po对象，应该返回vo对象，后面根据前端需求在设计返回
     /**根据topicId查询roast表中content_abstract对应的content*/
     @GetMapping("/roast/topic/queryContent/{contentId}")
     public TopicContentPo queryContent(@PathVariable("contentId")int contentId){
         TopicContentPo topicContentPo = topicContentPoMapper.selectByPrimaryKey(contentId);
         return topicContentPo;
+    }
+
+    /**添加吐槽话题*/
+    @PostMapping("/roast/topic/addRoastTopic")
+    public BaseResp addRoastTopic(RoastTopicInsertReq roastTopicInsertReq){
+        if(StringUtils.isBlank(roastTopicInsertReq.getContent()) || StringUtils.isBlank(roastTopicInsertReq.getTitle())){
+            throw new SelfException("000", "标题和内容不能为空");
+        }
+         roastTopicService.insertRoastTopic(roastTopicInsertReq);
+         return new BaseResp();
     }
 
 
