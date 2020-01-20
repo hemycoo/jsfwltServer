@@ -16,6 +16,8 @@ import com.jsfwlt.first.vo.roast.RoastTopicInsertReq;
 import com.jsfwlt.first.vo.roast.RoastTopicListVo;
 import com.jsfwlt.first.vo.roast.RoastTopicVo;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +43,8 @@ public class RoastTopicApi extends BaseApi {
     @Autowired
     private TopicContentPoMapper topicContentPoMapper;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoastTopicApi.class);
+
     /**根据吐槽的ID查询*/
     @GetMapping("/roast/topic/query/{topicId}")
     public RoastTopicVo queryTucaoTopic(@PathVariable("topicId")int topicId){
@@ -59,6 +63,7 @@ public class RoastTopicApi extends BaseApi {
     @GetMapping("/roast/topic/pageQuery")
     public RoastTopicListVo pageQuery(@RequestParam(defaultValue = "1") int p,
                                                @RequestParam(defaultValue = "8") int size){
+        LOGGER.info("测试一下");
         RoastTopicListVo roastTopicListVo = new RoastTopicListVo();
         PageHelper.startPage(p,size);
         List<RoastTopicPo> roastTopicPoList = roastTopicService.pageQueryRoastTopic();

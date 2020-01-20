@@ -7,6 +7,8 @@ import com.jsfwlt.first.po.roast.HostHolder;
 import com.jsfwlt.first.po.user.UserInfoPo;
 import com.jsfwlt.first.utils.JwtTokenUtil;
 import io.jsonwebtoken.Claims;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 
 /**
  * @author 十方飞鱼
@@ -32,8 +35,20 @@ public class PassportInterceptor implements HandlerInterceptor {
     @Autowired
     private HostHolder hostHolder;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PassportInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        LOGGER.info("URL : " + request.getRequestURL().toString());
+        LOGGER.info("HTTP_METHOD : " + request.getMethod());
+        LOGGER.info("IP : " + request.getRemoteAddr());
+        LOGGER.info("TOKEN : " + request.getHeader("token"));
+        LOGGER.info("Authorization : " + request.getHeader("Authorization"));
+        Enumeration<String> enu = request.getParameterNames();
+        while (enu.hasMoreElements()) {
+            String name = (String) enu.nextElement();
+            LOGGER.info("name:{},value:{}", name, request.getParameter(name));
+        }
         System.out.println("我是拦截器啊");
         System.out.println(request.getCookies());
         String token = null;
